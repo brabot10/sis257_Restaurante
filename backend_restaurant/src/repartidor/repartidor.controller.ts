@@ -7,7 +7,7 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { RepartidorEntity } from './entities/repartidor.entity';
 
 
-@ApiTags('reparttidor')
+@ApiTags('Cliente')
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 @Controller('repartidor')

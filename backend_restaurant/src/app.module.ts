@@ -8,6 +8,7 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { PedidoModule } from './pedido/pedido.module';
 import { PlatillosModule } from './platillos/platillos.module';
 import { RepartidorModule } from './repartidor/repartidor.module';
+import { ValoracionesModule } from './valoraciones/valoraciones.module';
 
 
 @Module({
@@ -30,6 +31,7 @@ import { RepartidorModule } from './repartidor/repartidor.module';
     UsuarioModule,
     AuthModule,
     RepartidorModule,
+    ValoracionesModule,
     
   ],
   controllers: [AppController],

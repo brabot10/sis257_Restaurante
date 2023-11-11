@@ -1,30 +1,33 @@
 
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { PlatilloEntity } from "src/platillos/entities/platillo.entity";
+import { RepartidorEntity } from "src/repartidor/entities/repartidor.entity";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('pedidos')
 export class PedidoEntity {
   @PrimaryGeneratedColumn()
   id: number;
   
-  //@Column({name: 'id_platillos'})
-  //idPlatillo:number;
-  @Column()
+  @Column({ type: 'varchar', length: 100, nullable: false })
   nombreC:string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 100, nullable: false })
   direccion: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 100, nullable: false })
   nombreProducto:string;
 
-  @Column()
+  @Column({ type: 'int', nullable: false })
   cantidad:number;
 
 
   @CreateDateColumn({ name: 'fecha_pedido' })
   fechaPedido: Date;
 
-  //@ManyToOne(() => PlatilloEntity, (platillo) => platillo.pedido)
-  //@JoinColumn({ name: 'idPlatillo', referencedColumnName: 'id' })
-  //platillo: PlatilloEntity;
+  @ManyToOne(() => RepartidorEntity, (repartidor) => repartidor.pedidos)
+  @JoinColumn({ name: 'id_cliente', referencedColumnName: 'id' })
+  repartidor: RepartidorEntity;
+
+  @OneToMany(() => PlatilloEntity, (platillos) => platillos.pedidos)
+  platillos: PlatilloEntity[];
 }

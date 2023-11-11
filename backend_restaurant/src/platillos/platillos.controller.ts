@@ -7,7 +7,7 @@ import { ApiBearerAuth, ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nest
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 
-@ApiTags('platillos')
+@ApiTags('Platillos')
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 @Controller('platillos')

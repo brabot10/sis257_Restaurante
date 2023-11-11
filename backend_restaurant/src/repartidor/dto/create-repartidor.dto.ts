@@ -8,10 +8,12 @@ export class CreateRepartidorDto {
     readonly nombreR: string;
 
     @ApiProperty()
-    @IsNumber({})
+    @IsNotEmpty({ message: 'El campo duracion no de ser vacío' })
+    @IsNumber({}, { message: 'El campo duracion debe ser de tipo número' })
     readonly carnet:number;
 
     @ApiProperty()
-    @IsNumber({})
+    @IsNotEmpty({ message: 'El campo duracion no de ser vacío' })
+    @IsNumber({}, { message: 'El campo duracion debe ser de tipo número' })
     readonly edad:number;
 }

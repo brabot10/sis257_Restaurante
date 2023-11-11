@@ -13,9 +13,9 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('SIS257')
-    .setDescription('Presentacion de laboratorio')
+    .setDescription('Presentacion Final de laboratorio s2_2023\nBryan Pilcolora Mendoza\nDaniela M. Lizondo')
     .setVersion('1.0')
-    .addTag('Pedidos')
+    .addTag('Por defecto')
     .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT', in: 'header' })
     .build();
   const document = SwaggerModule.createDocument(app, config);
