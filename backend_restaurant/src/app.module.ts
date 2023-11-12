@@ -26,13 +26,12 @@ import { ValoracionesModule } from './valoraciones/valoraciones.module';
       autoLoadEntities: true
     }),
 
-    PedidoModule,
-    PlatillosModule,
-    UsuarioModule,
     AuthModule,
     RepartidorModule,
+    PedidoModule,
+    PlatillosModule,
     ValoracionesModule,
-    
+    UsuarioModule,
   ],
   controllers: [AppController],
   providers: [AppService],

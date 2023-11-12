@@ -25,7 +25,7 @@ export class PedidoEntity {
   fechaPedido: Date;
 
   @ManyToOne(() => RepartidorEntity, (repartidor) => repartidor.pedidos)
-  @JoinColumn({ name: 'id_cliente', referencedColumnName: 'id' })
+  @JoinColumn({ name: 'id_repartidor', referencedColumnName: 'id' })
   repartidor: RepartidorEntity;
 
   @OneToMany(() => PlatilloEntity, (platillos) => platillos.pedidos)

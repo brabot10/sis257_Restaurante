@@ -39,4 +39,9 @@ export class CreatePedidoDto {
       { message: 'El campo fecha del Pedido debe ser de tipo fecha' },
     )
     readonly fechaPedido: Date;
+
+    @ApiProperty()
+    @IsDefined({ message: 'El campo Repartidor debe estar definido' })
+    @IsNumber({}, { message: 'El campo Repartidor debe ser de tipo numérico' })
+    readonly idRepartidor: number;
 }

@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsDefined, IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 export class CreatePlatilloDto {
 
@@ -8,7 +8,12 @@ export class CreatePlatilloDto {
     @IsString({ message: 'El campo nombre del producto debe ser de tipo cadena' })
     readonly nombre: string;
 
-    @ApiProperty()
-    @IsNumber({})
+    @IsNotEmpty({ message: 'El campo precio no de ser vacío' })
+    @IsNumber({}, { message: 'El campo precio debe ser de tipo número' })
     readonly precio:number;
+
+    @ApiProperty()
+    @IsDefined({ message: 'El campo Pedido debe estar definido' })
+    @IsNumber({}, { message: 'El campo Pedido debe ser de tipo numérico' })
+    readonly idPedido: number;
 }
