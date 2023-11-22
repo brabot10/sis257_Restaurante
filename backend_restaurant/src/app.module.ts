@@ -10,6 +10,7 @@ import { PlatillosModule } from './platillos/platillos.module';
 import { RepartidorModule } from './repartidor/repartidor.module';
 import { ValoracionesModule } from './valoraciones/valoraciones.module';
 import { PagoModule } from './pago/pago.module';
+import { DetallesModule } from './detalles/detalles.module';
 
 
 @Module({
@@ -34,6 +35,7 @@ import { PagoModule } from './pago/pago.module';
     ValoracionesModule,
     UsuarioModule,
     PagoModule,
+    DetallesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
