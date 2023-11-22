@@ -11,7 +11,7 @@ async function bootstrap() {
   app.enableCors();
 
   const config = new DocumentBuilder()
-    .setTitle('SIS257')
+    .setTitle('SIS257 - 23/11/2023')
     .setDescription(
       'Presentacion Final de laboratorio s2_2023\nBryan Pilcolora Mendoza\nDaniela M. Lizondo',
     )

@@ -1,4 +1,5 @@
 
+import { Detalle } from "src/detalles/entities/detalle.entity";
 import { PlatilloEntity } from "src/platillos/entities/platillo.entity";
 import { RepartidorEntity } from "src/repartidor/entities/repartidor.entity";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
@@ -30,4 +31,7 @@ export class PedidoEntity {
 
   @OneToMany(() => PlatilloEntity, (platillos) => platillos.pedidos)
   platillos: PlatilloEntity[];
+
+  @OneToMany(() => Detalle, (detalles) => detalles.pedidos)
+  detalles: Detalle[];
 }

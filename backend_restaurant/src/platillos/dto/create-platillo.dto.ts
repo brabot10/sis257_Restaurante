@@ -1,11 +1,14 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDefined, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsDefined, IsNotEmpty, IsNumber, IsString, MaxLength } from "class-validator";
 
 export class CreatePlatilloDto {
 
     @ApiProperty()
     @IsNotEmpty({ message: 'El campo nombre del producto no debe ser vacío' })
     @IsString({ message: 'El campo nombre del producto debe ser de tipo cadena' })
+    @MaxLength(100, {
+        message: 'El campo nombre del producto no debe ser mayor a 100 caracteres',
+      })
     readonly nombre: string;
 
     @IsNotEmpty({ message: 'El campo precio no de ser vacío' })

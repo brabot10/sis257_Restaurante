@@ -14,5 +14,4 @@ export class CreateUsuarioDto {
   @MaxLength(50, { message: 'El campo email no debe ser mayor a 50 caracteres' })
   readonly email: string;
 
-  
 }

@@ -1,3 +1,4 @@
+import { Pago } from "src/pago/entities/pago.entity";
 import { PedidoEntity } from "src/pedido/entities/pedido.entity";
 import { Valoracion } from "src/valoraciones/entities/valoracion.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
@@ -21,4 +22,7 @@ export class RepartidorEntity {
 
     @OneToMany(() => Valoracion, (valoraciones) => valoraciones.repartidor)
     valoraciones: Valoracion[];
+
+    @OneToMany(() => Pago, (pagos) => pagos.repartidor)
+    pagos: Pago[];
 }

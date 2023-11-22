@@ -66,8 +66,8 @@ export class ValoracionesService {
   }
 
   async remove(id: number) {
-    const interprete = await this.valoracionRepository.findOneBy({ id });
-    if (!interprete) {
+    const valoracion = await this.valoracionRepository.findOneBy({ id });
+    if (!valoracion) {
       throw new NotFoundException(`La valoración no existé ${id}`);
     }
     return this.valoracionRepository.delete(id);
