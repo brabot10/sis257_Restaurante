@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-12">
-            <h2 class="text-white mb-lg-0">Las Delicias</h2>
+            <h2 class="text-white mb-lg-0">QUE RICO!</h2>
           </div>
 
           <div

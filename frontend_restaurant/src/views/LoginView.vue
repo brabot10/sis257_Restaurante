@@ -48,7 +48,7 @@ function onSubmit() {
   width: 20%;
   min-width: 350px;
   max-width: 100%;
-  background: rgba(19, 35, 47, 0.9);
+  background: #040404;
   border-radius: 5px;
   padding: 40px;
   box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.3);
@@ -69,7 +69,8 @@ function onSubmit() {
 }
 
 .form-submit {
-  background: #ee5007;
+  background: #E49E48
+  ;
   border: none;
   border-radius: 5rem;
   color: white;
