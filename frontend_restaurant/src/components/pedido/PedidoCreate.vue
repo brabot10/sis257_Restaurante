@@ -12,12 +12,19 @@ const nombreC = ref('')
 const direccion = ref('')
 const nombreProducto = ref('')
 const cantidad = ref('')
+const fechaPedido = ref('')
+const idRepartidor = ref('')
 
 async function crearPedido() {
   await http
-    .post(ENDPOINT, { nombreC: nombreC.value,direccion: direccion.value,
+    .post(ENDPOINT, { 
+      nombreC: nombreC.value,
+      direccion: direccion.value,
       nombreProducto: nombreProducto.value,
-      cantidad: cantidad.value })
+      cantidad: cantidad.value,
+      fechaPedido: fechaPedido.value,
+      idRepartidor: idRepartidor.value 
+    })
     .then(() => router.push('/pedido'))
 }
 
@@ -78,6 +85,15 @@ function goBack() {
           />
           <label for="cantidad">Cantidad</label>
         </div>
+        <div class="form-floating mb-3">
+          <input type="date" class="form-control" v-model="fechaPedido" placeholder="fechaPedido" required />
+          <label for="fechaPedido">fecha del Pedido</label>
+        </div> 
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" v-model="idRepartidor" placeholder="idRepartidor" required />
+          <label for="idRepartidor">idRepartidor</label>
+        </div> 
+        
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
             <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Crear

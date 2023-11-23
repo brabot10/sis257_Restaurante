@@ -5,4 +5,5 @@ export interface Pedido {
     nombreProducto: string
     cantidad:number
     fechaPedido: Date
+    idRepartidor : number
   }

@@ -12,6 +12,8 @@ const nombreC = ref('')
 const direccion = ref('')
 const nombreProducto = ref('')
 const cantidad = ref('')
+const fechaPedido = ref('')
+const idRepartidor = ref('')
 const id = router.currentRoute.value.params['id']
 
 async function editarPedido() {
@@ -20,14 +22,21 @@ async function editarPedido() {
       nombreC: nombreC.value,
       direccion: direccion.value,
       nombreProducto: nombreProducto.value,
-      cantidad: cantidad.value
+      cantidad: cantidad.value,
+      fechaPedido: fechaPedido.value,
+      idRepartidor: idRepartidor.value
     })
     .then(() => router.push('/pedido'))
 }
 
 async function getPedido() {
   await http.get(`${ENDPOINT}/${id}`).then((response) => {
-    ;(nombreC.value=response.data.nombreC),(direccion.value = response.data.direccion), (nombreProducto.value = response.data.nombreProducto),(cantidad.value = response.data.cantidad)
+      ;(nombreC.value = response.data.nombreC),
+      (direccion.value = response.data.direccion),
+      (nombreProducto.value = response.data.nombreProducto),
+      (cantidad.value = response.data.cantidad),
+      (fechaPedido.value = response.data.fechaPedido),
+      (idRepartidor.value = response.data.idRepartidor)
   })
 }
 
@@ -44,7 +53,10 @@ onMounted(() => {
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        
+        <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
+        <li class="breadcrumb-item">
+          <RouterLink to="/pedido">Pedidos</RouterLink>
+        </li>
         <li class="breadcrumb-item active" aria-current="page">Editar</li>
       </ol>
     </nav>
@@ -55,20 +67,6 @@ onMounted(() => {
 
     <div class="row">
       <form @submit.prevent="editarPedido">
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" v-model="direccion" placeholder="Direccion" required />
-          <label for="direccion">Direccion</label>
-        </div>
-        <div class="form-floating">
-          <input
-            type="text"
-            class="form-control"
-            v-model="nombreProducto"
-            placeholder="Nombre del pedido"
-            required
-          />
-          <label for="nombreProducto">Nombre del pedido</label>
-        </div>
         <div class="form-floating">
           <input
             type="text"
@@ -79,6 +77,27 @@ onMounted(() => {
           />
           <label for="nombreC">Nombre Cliente</label>
         </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            v-model="direccion"
+            placeholder="Direccion"
+            required
+          />
+          <label for="direccion">Direccion</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            v-model="nombreProducto"
+            placeholder="Nombre del pedido"
+            required
+          />
+          <label for="nombreProducto">Nombre del Pedido</label>
+        </div>
+
         <div class="form-floating">
           <input
             type="number"
@@ -89,17 +108,38 @@ onMounted(() => {
           />
           <label for="cantidad">Cantidad</label>
         </div>
+        <div class="form-floating mb-3">
+          <input
+            type="date"
+            class="form-control"
+            v-model="fechaPedido"
+            placeholder="fechaPedido"
+            required
+          />
+          <label for="fechaPedido">fecha del Pedido</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="number"
+            class="form-control"
+            v-model="idRepartidor"
+            placeholder="idRepartidor"
+            required
+          />
+          <label for="idRepartidor">idRepartidor</label>
+        </div>
+
         <div class="text-center mt-3">
-          <button type="submit" class="btn btn-primary btn-lg"><i class="bi bi-file-earmark-post-fill"></i></button>
-          
+          <button type="submit" class="btn btn-primary btn-lg">
+            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Guardar
+          </button>
         </div>
       </form>
     </div>
     <div class="text-left">
-      <button class="btn btn-primary btn-lg" @click="goBack" ><i class="bi bi-arrow-90deg-left"></i></button>
+      <button class="btn btn-link" @click="goBack">Volver</button>
     </div>
   </div>
 </template>
-
 
 <style></style>

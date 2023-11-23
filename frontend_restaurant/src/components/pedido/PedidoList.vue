@@ -59,17 +59,19 @@ onMounted(() => {
             <th scope="col">Nombre del Producto</th>
             <th scope="col">Cantidad</th>
             <th scope="col">Fecha del Pedido</th>
+            <th scope="col">idRepartidor</th> 
             <th scope="col">Editar/Cancelar</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(pedidos, index) in pedido.values()" :key="pedidos.id">
+          <tr v-for="(pedidos, index) in pedido" :key="pedidos.id">
             <th scope="row">{{ index + 1 }}</th>
             <td>{{ pedidos.nombreC }}</td>
             <td>{{ pedidos.direccion }}</td>
             <td>{{ pedidos.nombreProducto}}</td>
             <td>{{ pedidos.cantidad}}</td>
             <td>{{ pedidos.fechaPedido}}</td>
+            <td>{{ pedidos.idRepartidor }}</td>
             <td>
               <button class="btn text-success" @click="toEdit(pedidos.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" />
