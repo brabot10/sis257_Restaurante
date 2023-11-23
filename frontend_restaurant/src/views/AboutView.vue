@@ -26,7 +26,7 @@
     <div class="card">
       <img src="@/assets/img/menu/1.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Pollo Frito</h5>
+        <h5 class="card-title">Pizza Media</h5>
         <p class="card-text">Precio 25</p>
           <RouterLink to="/pedido/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
         
@@ -57,7 +57,7 @@
     <div class="card">
       <img src="@/assets/img/menu/4.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Lafayette</h5>
+        <h5 class="card-title">Pollo Frito</h5>
         <p class="card-text">Precio 35bs</p>
         <RouterLink to="/pedido/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
       </div>
@@ -67,13 +67,22 @@
     <div class="card">
       <img src="@/assets/img/menu/5.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Saltena</h5>
+        <h5 class="card-title">Salteña</h5>
         <p class="card-text">Precio 5bs</p>
         <RouterLink to="/pedido/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
       </div>
     </div>
   </div>
-
+  <div class="col">
+    <div class="card">
+      <img src="@/assets/img/menu/6.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Rodaja de Pastel</h5>
+        <p class="card-text">Precio 10bs</p>
+        <RouterLink to="/pedido/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
+      </div>
+    </div>
+  </div>
 </div>
 
   </div>

@@ -48,7 +48,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 text-center">
-          <h2 class="mb-4">Restaurant</h2>
+          <h2 class="mb-4">Restaurante</h2>
         </div>
 
         <div class="col-lg-5 col-12">
@@ -71,13 +71,6 @@
               />
             </div>
           </div>
-
-          <div class="artists-thumb">
-            <img
-              src="@/assets/img/reservation.jpg"
-              class="artists-image img-fluid"
-            />
-          </div>
         </div>
       </div>
     </div>
@@ -87,7 +80,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-12 mx-auto">
-          <h2 class="text-center mb-4">Ubicacion</h2>
+          <h2 class="text-center mb-4">Ubicación</h2>
 
           <nav class="d-flex justify-content-center">
             <div
@@ -139,7 +132,6 @@
                 width="100%"
                 height="450"
                 style="border: 0"
-                allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
