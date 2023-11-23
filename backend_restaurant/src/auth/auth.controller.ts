@@ -5,7 +5,7 @@ import { AuthLoginDto } from './dto/auth-login.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { Public } from './decorators/auth-public.decorator';
 
-@ApiTags('auth')
+@ApiTags('Autentificación')
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 @Controller('auth')

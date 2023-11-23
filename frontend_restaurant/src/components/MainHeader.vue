@@ -46,19 +46,28 @@ const authStore = useAuthStore();
           </li>
           <slot v-if="authStore.token">
             <li class="nav-item">
-            <li class="nav-item">
-              <RouterLink to="/about" class="nav-link click-scroll">Platillos</RouterLink>
+              <RouterLink to="/about" class="nav-link click-scroll">Menú</RouterLink>
             </li>
+            <li class="nav-item">
+              <a class="nav-link click-scroll" href="#section_6">Platillos</a>
+            </li>
+            <li class="nav-item">
               <RouterLink to="/pedido" class="nav-link click-scroll">Pedidos Realizados</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/generos" class="nav-link click-scroll">Géneros</RouterLink>
+              <a class="nav-link click-scroll" href="#section_6">Detalles</a>
+            </li>
+            <li class="nav-item ">
+              <RouterLink to="/generos" class="nav-link click-scroll " >Repartidor</RouterLink>
             </li>
             <li class="nav-item">
-              <a class="nav-link click-scroll" href="#section_5">Albumes</a>
+              <a class="nav-link click-scroll" href="#section_6">Valoraciones</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link click-scroll" href="#section_6">Canciones</a>
+              <a class="nav-link click-scroll" href="#section_6">Pagos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link click-scroll" href="#section_6">Usuarios</a>
             </li>
             <li class="nav-item">
               <a class="nav-link click-scroll" href="#">Hola {{ authStore.user }}</a>
@@ -73,3 +82,6 @@ const authStore = useAuthStore();
     </div>
   </nav>
 </template>
+
+
+
