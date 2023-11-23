@@ -52,19 +52,19 @@ const router = createRouter({
         }
       ]
     },
-    // {
-    //   path: '/detalles', //direccion del swagger
-    //   name: 'detalles',
-    //   component: () => import('../views/DetalleView.vue'),
-    //   children: [
-    //     { path: '', component: () => import('../components/detalle/DetalleList.vue') },
-    //     { path: 'crear', component: () => import('../components/detalle/DetalleCreate.vue') },
-    //     {
-    //       path: 'editar/:id',
-    //       component: () => import('../components/detalle/DetalleEdit.vue')
-    //     }
-    //   ]
-    // },
+    {
+      path: '/detalles', //direccion del swagger
+      name: 'detalles',
+      component: () => import('../views/DetalleView.vue'),
+      children: [
+        { path: '', component: () => import('../components/detalle/DetalleList.vue') },
+        { path: 'crear', component: () => import('../components/detalle/DetalleCreate.vue') },
+        {
+          path: 'editar/:id',
+          component: () => import('../components/detalle/DetalleEdit.vue')
+        }
+      ]
+    },
     // {
     //   path: '/repartidor', //direccion del swagger
     //   name: 'repartidor',
