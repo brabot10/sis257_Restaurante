@@ -65,20 +65,20 @@ const router = createRouter({
         }
       ]
     },
-    // {
-    //   path: '/repartidor', //direccion del swagger
-    //   name: 'repartidor',
-    //   component: () => import('../views/RepartidorView.vue'),
-    //   children: [
-    //     { path: '', component: () => import('../components/repartidor/RepartidorList.vue') },
-    //     { path: 'crear', component: () => import('../components/repartidor/RepartidorCreate.vue') },
-    //     {
-    //       path: 'editar/:id',
-    //       component: () => import('../components/repartidor/RepartidorEdit.vue')
-    //     }
-    //   ]
-    // },
-    // {
+    {
+      path: '/repartidor', //direccion del swagger
+      name: 'repartidor',
+      component: () => import('../views/RepartidorView.vue'),
+      children: [
+        { path: '', component: () => import('../components/repartidor/RepartidorList.vue') },
+        { path: 'crear', component: () => import('../components/repartidor/RepartidorCreate.vue') },
+        {
+          path: 'editar/:id',
+          component: () => import('../components/repartidor/RepartidorEdit.vue')
+        }
+      ]
+    },
+    //{
     //   path: '/valoraciones', //direccion del swagger
     //   name: 'valoraciones',
     //   component: () => import('../views/ValoracionView.vue'),
