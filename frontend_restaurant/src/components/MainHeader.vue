@@ -73,7 +73,7 @@ const authStore = useAuthStore();
               <a class="nav-link click-scroll" href="#section_6">Valoraciones</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link click-scroll" href="#section_6">Pagos</a>
+              <RouterLink to="/pago" class="nav-link click-scroll">Pagos</RouterLink>
             </li>
             <li class="nav-item">
               <a class="nav-link click-scroll" href="#section_6">Usuarios</a>

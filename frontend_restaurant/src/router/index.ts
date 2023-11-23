@@ -52,58 +52,58 @@ const router = createRouter({
         }
       ]
     },
-    {
-      path: '/detalles', //direccion del swagger
-      name: 'detalles',
-      component: () => import('../views/DetalleView.vue'),
-      children: [
-        { path: '', component: () => import('../components/detalle/DetalleList.vue') },
-        { path: 'crear', component: () => import('../components/detalle/DetalleCreate.vue') },
-        {
-          path: 'editar/:id',
-          component: () => import('../components/detalle/DetalleEdit.vue')
-        }
-      ]
-    },
-    {
-      path: '/repartidor', //direccion del swagger
-      name: 'repartidor',
-      component: () => import('../views/RepartidorView.vue'),
-      children: [
-        { path: '', component: () => import('../components/repartidor/RepartidorList.vue') },
-        { path: 'crear', component: () => import('../components/repartidor/RepartidorCreate.vue') },
-        {
-          path: 'editar/:id',
-          component: () => import('../components/repartidor/RepartidorEdit.vue')
-        }
-      ]
-    },
-    {
-      path: '/valoraciones', //direccion del swagger
-      name: 'valoraciones',
-      component: () => import('../views/ValoracionView.vue'),
-      children: [
-        { path: '', component: () => import('../components/valoracion/ValoracionList.vue') },
-        { path: 'crear', component: () => import('../components/valoracion/ValoracionCreate.vue') },
-        {
-          path: 'editar/:id',
-          component: () => import('../components/valoracion/ValoracionEdit.vue')
-        }
-      ]
-    },
-    {
-      path: '/usuarios',
-      name: 'usuarios',
-      component: () => import('../views/UsuarioView.vue'),
-      children: [
-        { path: '', component: () => import('../components/usuario/UsuarioList.vue') }
-         { path: 'crear', component: () => import('../components/usuario/UsuarioCreate.vue') },
-         {
-          path: 'editar/:id',
-           component: () => import('../components/usuario/UsuarioEdit.vue')
-         }
-      ]
-    },
+    // {
+    //   path: '/detalles', //direccion del swagger
+    //   name: 'detalles',
+    //   component: () => import('../views/DetalleView.vue'),
+    //   children: [
+    //     { path: '', component: () => import('../components/detalle/DetalleList.vue') },
+    //     { path: 'crear', component: () => import('../components/detalle/DetalleCreate.vue') },
+    //     {
+    //       path: 'editar/:id',
+    //       component: () => import('../components/detalle/DetalleEdit.vue')
+    //     }
+    //   ]
+    // },
+    // {
+    //   path: '/repartidor', //direccion del swagger
+    //   name: 'repartidor',
+    //   component: () => import('../views/RepartidorView.vue'),
+    //   children: [
+    //     { path: '', component: () => import('../components/repartidor/RepartidorList.vue') },
+    //     { path: 'crear', component: () => import('../components/repartidor/RepartidorCreate.vue') },
+    //     {
+    //       path: 'editar/:id',
+    //       component: () => import('../components/repartidor/RepartidorEdit.vue')
+    //     }
+    //   ]
+    // },
+    // {
+    //   path: '/valoraciones', //direccion del swagger
+    //   name: 'valoraciones',
+    //   component: () => import('../views/ValoracionView.vue'),
+    //   children: [
+    //     { path: '', component: () => import('../components/valoracion/ValoracionList.vue') },
+    //     { path: 'crear', component: () => import('../components/valoracion/ValoracionCreate.vue') },
+    //     {
+    //       path: 'editar/:id',
+    //       component: () => import('../components/valoracion/ValoracionEdit.vue')
+    //     }
+    //   ]
+    // },
+    // {
+    //   path: '/usuarios',
+    //   name: 'usuarios',
+    //   component: () => import('../views/UsuarioView.vue'),
+    //   children: [
+    //     { path: '', component: () => import('../components/usuario/UsuarioList.vue') }
+    //      { path: 'crear', component: () => import('../components/usuario/UsuarioCreate.vue') },
+    //      {
+    //       path: 'editar/:id',
+    //        component: () => import('../components/usuario/UsuarioEdit.vue')
+    //      }
+    //   ]
+    // },
     {
       path: '/about',
       name: 'about',
