@@ -27,7 +27,7 @@ const router = createRouter({
       ]
     },
     {
-      path: '/platillos',
+      path: '/platillos',//direccion del swagger
       name: 'platillos',
       component: () => import('../views/PlatilloView.vue'),
       children: [

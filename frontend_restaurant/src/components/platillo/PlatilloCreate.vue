@@ -10,10 +10,15 @@ const props = defineProps<{
 const ENDPOINT = props.ENDPOINT_API ?? ''
 const nombre = ref('')
 const precio = ref('')
+const idPedido = ref('')
 
 async function crearPlatillo() {
   await http
-    .post(ENDPOINT, { nombre: nombre.value, precio: precio.value })
+    .post(ENDPOINT, { 
+      nombre: nombre.value, 
+      precio: precio.value,
+      idPedido: idPedido.value
+    })
     .then(() => router.push('/platillos'))
 }
 
@@ -40,13 +45,24 @@ function goBack() {
 
     <div class="row">
       <form @submit.prevent="crearPlatillo">
+        <!--cuando yo aprete guardar me llma al metodo crearPlatillo-->
         <div class="form-floating mb-3">
           <input type="text" class="form-control" v-model="nombre" placeholder="Nombre" required />
           <label for="nombre">Nombre</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="number" class="form-control" v-model="precio" placeholder="Precio" required />
+          <input
+            type="number"
+            class="form-control"
+            v-model="precio"
+            placeholder="Precio"
+            required
+          />
           <label for="precio">Precio</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" v-model="idPedido" placeholder="idPedido" required />
+          <label for="idPedido">idPedido</label>
         </div>
 
         <div class="text-center mt-3">

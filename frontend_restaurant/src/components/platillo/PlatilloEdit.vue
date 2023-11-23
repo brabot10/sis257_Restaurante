@@ -10,20 +10,24 @@ const props = defineProps<{
 const ENDPOINT = props.ENDPOINT_API ?? ''
 const nombre = ref('')
 const precio = ref('')
+const idPedido = ref('')
 const id = router.currentRoute.value.params['id']
 
 async function editarPlatillo() {
   await http
     .patch(`${ENDPOINT}/${id}`, {
       nombre: nombre.value,
-      precio: precio.value
+      precio: precio.value,
+      idPedido: idPedido.value
     })
     .then(() => router.push('/platillos'))
 }
 
 async function getPlatillo() {
   await http.get(`${ENDPOINT}/${id}`).then((response) => {
-    ;(nombre.value = response.data.nombre), (precio.value = response.data.precio)
+    ;(nombre.value = response.data.nombre), 
+    (precio.value = response.data.precio),
+    (idPedido.value = response.data.idPedido)
   })
 }
 
@@ -49,7 +53,7 @@ onMounted(() => {
     </nav>
 
     <div class="row">
-      <h2>Editar Intérprete</h2>
+      <h2>Editar Platillos</h2>
     </div>
 
     <div class="row">
@@ -61,6 +65,10 @@ onMounted(() => {
         <div class="form-floating mb-3">
           <input type="text" class="form-control" v-model="precio" placeholder="Precio" required />
           <label for="precio">Precio</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" v-model="idPedido" placeholder="idPedido" required />
+          <label for="idPedido">idPedido</label>
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
