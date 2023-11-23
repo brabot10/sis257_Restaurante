@@ -76,7 +76,7 @@ const authStore = useAuthStore();
               <RouterLink to="/pago" class="nav-link click-scroll">Pagos</RouterLink>
             </li>
             <li class="nav-item">
-              <a class="nav-link click-scroll" href="#section_6">Usuarios</a>
+              <RouterLink to="/usuarios" class="nav-link click-scroll">Usuarios</RouterLink>
             </li>
             <li class="nav-item">
               <a class="nav-link click-scroll" href="#">Hola {{ authStore.user }}</a>
