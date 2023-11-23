@@ -28,7 +28,7 @@
       <div class="card-body">
         <h5 class="card-title">Pizza Media</h5>
         <p class="card-text">Precio 25</p>
-          <RouterLink to="/pedido/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
+          <RouterLink to="/platillos/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
         
       </div>
     </div>
@@ -39,7 +39,7 @@
       <div class="card-body">
         <h5 class="card-title">Hamburguesa</h5>
         <p class="card-text">Precio 8bs</p>
-        <RouterLink to="/pedido/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
+        <RouterLink to="/platillos/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
       </div>
     </div>
   </div>
@@ -49,7 +49,7 @@
       <div class="card-body">
         <h5 class="card-title">Tacos</h5>
         <p class="card-text">Precio 15bs</p>
-        <RouterLink to="/pedido/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
+        <RouterLink to="/platillos/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@
       <div class="card-body">
         <h5 class="card-title">Pollo Frito</h5>
         <p class="card-text">Precio 35bs</p>
-        <RouterLink to="/pedido/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
+        <RouterLink to="/platillos/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
       </div>
     </div>
   </div>
@@ -69,7 +69,7 @@
       <div class="card-body">
         <h5 class="card-title">Salteña</h5>
         <p class="card-text">Precio 5bs</p>
-        <RouterLink to="/pedido/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
+        <RouterLink to="/platillos/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
       </div>
     </div>
   </div>
@@ -79,7 +79,7 @@
       <div class="card-body">
         <h5 class="card-title">Rodaja de Pastel</h5>
         <p class="card-text">Precio 10bs</p>
-        <RouterLink to="/pedido/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
+        <RouterLink to="/platillos/crear" class="btn btn-primary btn-lg">Pedir</RouterLink>
       </div>
     </div>
   </div>

@@ -4,6 +4,7 @@ const location = useRoute();
 import { useAuthStore } from "@/stores/index";
 const authStore = useAuthStore();
 </script>
+
 <template>
   <header class="site-header">
     <div class="container">
@@ -17,16 +18,24 @@ const authStore = useAuthStore();
       </div>
     </div>
   </header>
-  <nav
-    class="navbar navbar-expand-lg"
+
+  <!-- <nav class="navbar navbar-expand-lg"
     :style="location.path != '/' ? 'background-color: black !important' : ''"
-  >
+  > -->
+  <nav class="navbar navbar-expand-lg" 
+  :style="'background-color:' + (
+    location.path != '/' ? 'black ' : '')"
+    >
+
     <div class="container">
-      <RouterLink to="/" class="navbar-brand"> QUE RICO!</RouterLink>
+      <a class="navbar-brand" href="index.html"> QUE RICO! </a>
+      <!-- <RouterLink to="/" class="navbar-brand"> QUE RICO!</RouterLink> -->
 
       <RouterLink v-if="!authStore.token" to="/login" class="btn custom-btn d-lg-none ms-auto me-4">
         Iniciar Sesión
       </RouterLink>
+
+      <a v-else @click="authStore.logout()" class="btn custom-btn d-lg-none ms-auto me-4">Salir</a>
 
       <button
         class="navbar-toggler"

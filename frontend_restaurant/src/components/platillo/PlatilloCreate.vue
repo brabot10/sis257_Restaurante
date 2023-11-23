@@ -2,20 +2,22 @@
 import { ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
+import type { Pedido } from '@/models/pedido'
 
 const props = defineProps<{
   ENDPOINT_API: string
 }>()
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
+const pedido = ref<Pedido[]>([])
 const nombre = ref('')
 const precio = ref('')
 const idPedido = ref('')
 
 async function crearPlatillo() {
   await http
-    .post(ENDPOINT, { 
-      nombre: nombre.value, 
+    .post(ENDPOINT, {
+      nombre: nombre.value,
       precio: precio.value,
       idPedido: idPedido.value
     })
@@ -60,10 +62,18 @@ function goBack() {
           />
           <label for="precio">Precio</label>
         </div>
+        <!-- <div class="form-floating mb-3">
+          <select v-model="idPedido" class="form-select">
+            <option v-for="pedidos in pedido" :key="pedidos.id" :value="pedidos.id">
+              {{ pedidos.nombreC }}
+            </option>
+          </select>
+          <label for="idPedido">Cliente</label>
+        </div> -->
         <div class="form-floating mb-3">
           <input type="number" class="form-control" v-model="idPedido" placeholder="idPedido" required />
           <label for="idPedido">idPedido</label>
-        </div>
+        </div> 
 
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">

@@ -12,7 +12,8 @@ const ENDPOINT = props.ENDPOINT_API ?? ''
 var platillos = ref<Platillo[]>([])//creamos la variable plural quie tomara loscalores de models/platillos
 
 async function getPlatillos() {
-  platillos.value = await http.get(ENDPOINT).then((response) => response.data)//para listar hace get del backend
+  platillos.value = await http.get(ENDPOINT).then(
+    (response) => response.data)//para listar hace get del backend
 }
 
 function toEdit(id: number) {
