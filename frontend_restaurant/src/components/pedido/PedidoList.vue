@@ -43,7 +43,9 @@ onMounted(() => {
     <div class="row">
       <h2>Lista de Pedidos</h2>
       <div class="col-12">
-        <RouterLink to="/pedido/crear">Crear Nuevo Pedido</RouterLink>
+        <RouterLink to="/pedido/crear">
+          <font-awesome-icon icon="fa-solid fa-plus" />Crear Nuevo Pedido
+        </RouterLink>
       </div>
     </div>
 
@@ -69,8 +71,12 @@ onMounted(() => {
             <td>{{ pedidos.cantidad}}</td>
             <td>{{ }}</td>
             <td>
-              <button class="btn btn-link" @click="toEdit(pedidos.id)" ><i class="bi bi-pencil-fill"></i></button>
-              <button class="btn btn-link" @click="toDelete(pedidos.id)" ><i class="bi bi-trash3"></i></button>
+              <button class="btn text-success" @click="toEdit(pedidos.id)">
+                <font-awesome-icon icon="fa-solid fa-edit" />
+              </button>
+              <button class="btn text-danger" @click="toDelete(pedidos.id)">
+                <font-awesome-icon icon="fa-solid fa-trash" />
+              </button>
             </td>
           </tr>
         </tbody>

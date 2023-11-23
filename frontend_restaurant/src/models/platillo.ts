@@ -1,6 +1,5 @@
-export interface Platillos {
+export interface Platillo {
     id: number;
     nombre: string;
     precio:number;
-
   }

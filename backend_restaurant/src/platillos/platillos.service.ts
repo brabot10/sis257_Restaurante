@@ -19,6 +19,7 @@ export class PlatillosService {
   async create(createPlatilloDto: CreatePlatilloDto): Promise<PlatilloEntity> {
     const existe = await this.platilloRepository.findOneBy({
       nombre: createPlatilloDto.nombre.trim(),
+      precio: createPlatilloDto.precio,
       pedidos: { id: createPlatilloDto.idPedido },
     });
 

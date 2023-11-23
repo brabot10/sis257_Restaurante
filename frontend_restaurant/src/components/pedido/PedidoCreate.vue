@@ -78,14 +78,15 @@ function goBack() {
           />
           <label for="cantidad">Cantidad</label>
         </div>
-        
         <div class="text-center mt-3">
-          <button type="submit" class="btn btn-primary btn-lg"><i class="bi bi-file-earmark"></i></button>
+          <button type="submit" class="btn btn-primary btn-lg">
+            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Crear
+          </button>
         </div>
       </form>
     </div>
     <div class="text-left">
-      <button class="btn btn-primary btn-lg" @click="goBack" ><i class="bi bi-arrow-90deg-left"></i></button>
+      <button class="btn btn-link" @click="goBack">Volver</button>
     </div>
   </div>
 </template>

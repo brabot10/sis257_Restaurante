@@ -32,7 +32,7 @@ export class CreatePedidoDto {
     @IsNumber({}, { message: 'El campo cantidad debe ser de tipo número' })
     readonly cantidad:number;
 
-    @ApiProperty({ example: '01/05/2021' })
+    @ApiProperty({ example: '2005-05-01' })
     @IsDefined({ message: 'El campo fecha del Pedido no de ser vacío' })
     @IsDateString(
       {},

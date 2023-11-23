@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import LoginView from "@/views/LoginView.vue";
-import { useAuthStore } from '@/stores';
-import { getTokenFromLocalStorage } from '@/helpers';
+import LoginView from '@/views/LoginView.vue'
+import { useAuthStore } from '@/stores'
+import { getTokenFromLocalStorage } from '@/helpers'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,18 +12,31 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
-    { path: "/login", name: "login", component: LoginView },
+    { path: '/login', name: 'login', component: LoginView },
     {
       path: '/pedido',
       name: 'pedido',
       component: () => import('../views/PedidoView.vue'),
       children: [
-      { path: '', component: () => import('../components/pedido/PedidoList.vue') },
-      { path: 'crear', component: () => import('../components/pedido/PedidoCreate.vue') },
-      {
-        path: 'editar/:id',
-        component: () => import('../components/pedido/PedidoEdit.vue')
-      }
+        { path: '', component: () => import('../components/pedido/PedidoList.vue') },
+        { path: 'crear', component: () => import('../components/pedido/PedidoCreate.vue') },
+        {
+          path: 'editar/:id',
+          component: () => import('../components/pedido/PedidoEdit.vue')
+        }
+      ]
+    },
+    {
+      path: '/platillos',
+      name: 'platillos',
+      component: () => import('../views/PlatilloView.vue'),
+      children: [
+        { path: '', component: () => import('../components/platillo/PlatilloList.vue') },
+       { path: 'crear', component: () => import('../components/platillo/PlatilloCreate.vue') },
+        {
+           path: 'editar/:id',
+          component: () => import('../components/platillo/PlatilloEdit.vue')
+        }
       ]
     },
     {
@@ -37,16 +50,16 @@ const router = createRouter({
   ]
 })
 
-router.beforeEach(async to => {
-  const publicPages = ["/login"];
-  const authRequired = !publicPages.includes(to.path);
-  const authStore = useAuthStore();
+router.beforeEach(async (to) => {
+  const publicPages = ['/login']
+  const authRequired = !publicPages.includes(to.path)
+  const authStore = useAuthStore()
 
   if (authRequired && !getTokenFromLocalStorage()) {
-    if (authStore) authStore.logout();
-    authStore.returnUrl = to.fullPath;
-    return "/login";
+    if (authStore) authStore.logout()
+    authStore.returnUrl = to.fullPath
+    return '/login'
   }
-});
+})
 
 export default router

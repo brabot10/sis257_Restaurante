@@ -10,7 +10,8 @@ export class CreatePlatilloDto {
         message: 'El campo nombre del producto no debe ser mayor a 100 caracteres',
       })
     readonly nombre: string;
-
+    
+    @ApiProperty()
     @IsNotEmpty({ message: 'El campo precio no de ser vacío' })
     @IsNumber({}, { message: 'El campo precio debe ser de tipo número' })
     readonly precio:number;

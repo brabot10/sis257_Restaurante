@@ -10,6 +10,9 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/vue-fontawesome": "^3.0.5",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "pinia": "^2.0.35",
