@@ -41,6 +41,7 @@ function goBack() {
       </ol>
     </nav>
 
+    <br><br><br>
     <div class="row">
       <h2>Crear Nuevo Platillo</h2>
     </div>

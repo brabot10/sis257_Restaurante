@@ -45,9 +45,9 @@ onMounted(() => {
         <!--//clase propias de botstrap-->
       </ol>
     </nav>
-
+    <br><br><br>               
     <div class="row">
-      <h2>Lista de Valoracions</h2>
+      <h2>Lista de Valoraciones</h2>
       <div class="col-12">
         <RouterLink to="/valoraciones/crear"
           ><!--Enlace deswwgaer para crear-->
@@ -73,7 +73,7 @@ onMounted(() => {
             <!--el singular solo es una variable-->
             <th scope="row">{{ index + 1 }}</th>
             <!--cuando el intex comienza en 0 le damos mas 1-->
-            <td>{{ valoracion.descripción }}</td>
+            <td>{{ valoracion.descripcion }}</td>
             <td>{{ valoracion.idPlatillo }}</td>
             <td>{{ valoracion.idRepartidor }}</td>
             <td>

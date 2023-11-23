@@ -55,6 +55,7 @@ onMounted(() => {
       </ol>
     </nav>
 
+    <br><br><br>
     <div class="row">
       <h2>Editar Pago</h2>
     </div>

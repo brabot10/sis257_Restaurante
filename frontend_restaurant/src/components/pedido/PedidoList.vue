@@ -40,6 +40,7 @@ onMounted(() => {
       </ol>
     </nav>
 
+    <br><br><br>
     <div class="row">
       <h2>Lista de Pedidos</h2>
       <div class="col-12">

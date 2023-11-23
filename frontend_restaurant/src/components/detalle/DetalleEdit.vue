@@ -58,6 +58,7 @@ onMounted(() => {
       </ol>
     </nav>
 
+    <br><br><br>
     <div class="row">
       <h2>Editar Detalles</h2>
     </div>

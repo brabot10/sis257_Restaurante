@@ -46,6 +46,7 @@ onMounted(() => {
       </ol>
     </nav>
 
+    <br><br><br>
     <div class="row">
       <h2>Lista de Detalles</h2>
       <div class="col-12">
@@ -76,7 +77,7 @@ onMounted(() => {
             <th scope="row">{{ index + 1 }}</th>
             <!--cuando el intex comienza en 0 le damos mas 1-->
             <td>{{ detalle.direccionEstado }}</td>
-            <td>{{ detalle.puntuación }}</td>
+            <td>{{ detalle.puntuacion }}</td>
             <td>{{ detalle.credibilidad }}</td>
             <td>{{ detalle.amabilidad }}</td>
             <td>{{ detalle.idPedido }}</td>

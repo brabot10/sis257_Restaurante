@@ -41,6 +41,7 @@ onMounted(() => {
       </ol>
     </nav>
 
+    <br><br><br>
     <div class="row">
       <h2>Lista de Repartidor</h2>
       <div class="col-12">

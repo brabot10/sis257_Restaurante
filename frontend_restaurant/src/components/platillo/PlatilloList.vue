@@ -40,7 +40,8 @@ onMounted(() => {
         <li class="breadcrumb-item active" aria-current="page">Platillo</li><!--//clase propias de botstrap--> 
       </ol>
     </nav>
-
+    
+    <br><br><br>
     <div class="row">
       <h2>Lista de Platillos</h2>
       <div class="col-12">

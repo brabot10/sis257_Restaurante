@@ -52,6 +52,7 @@ onMounted(() => {
       </ol>
     </nav>
 
+    <br><br><br>
     <div class="row">
       <h2>Editar Repartidor</h2>
     </div>

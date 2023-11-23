@@ -45,6 +45,7 @@ function goBack() {
       </ol>
     </nav>
 
+    <br><br><br>
     <div class="row">
       <h2>Crear Nuevo Detalle</h2>
     </div>
