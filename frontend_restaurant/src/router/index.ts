@@ -78,19 +78,19 @@ const router = createRouter({
         }
       ]
     },
-    //{
-    //   path: '/valoraciones', //direccion del swagger
-    //   name: 'valoraciones',
-    //   component: () => import('../views/ValoracionView.vue'),
-    //   children: [
-    //     { path: '', component: () => import('../components/valoracion/ValoracionList.vue') },
-    //     { path: 'crear', component: () => import('../components/valoracion/ValoracionCreate.vue') },
-    //     {
-    //       path: 'editar/:id',
-    //       component: () => import('../components/valoracion/ValoracionEdit.vue')
-    //     }
-    //   ]
-    // },
+    {
+      path: '/valoraciones', //direccion del swagger
+      name: 'valoraciones',
+      component: () => import('../views/ValoracionView.vue'),
+      children: [
+        { path: '', component: () => import('../components/valoracion/ValoracionList.vue') },
+        { path: 'crear', component: () => import('../components/valoracion/ValoracionCreate.vue') },
+        {
+          path: 'editar/:id',
+          component: () => import('../components/valoracion/ValoracionEdit.vue')
+        }
+      ]
+    },
     // {
     //   path: '/usuarios',
     //   name: 'usuarios',
