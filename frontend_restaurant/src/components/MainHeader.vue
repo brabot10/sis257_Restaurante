@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useRoute } from "vue-router";
-const location = useRoute();
-import { useAuthStore } from "@/stores/index";
-const authStore = useAuthStore();
+import { useRoute } from 'vue-router'
+const location = useRoute()
+import { useAuthStore } from '@/stores/index'
+const authStore = useAuthStore()
 </script>
 
 <template>
@@ -22,11 +22,10 @@ const authStore = useAuthStore();
   <!-- <nav class="navbar navbar-expand-lg"
     :style="location.path != '/' ? 'background-color: black !important' : ''"
   > -->
-  <nav class="navbar navbar-expand-lg" 
-  :style="'background-color:' + (
-    location.path != '/' ? 'black ' : '')"
-    >
-
+  <nav
+    class="navbar navbar-expand-lg"
+    :style="'background-color:' + (location.path != '/' ? 'black ' : '')"
+  >
     <div class="container">
       <a class="navbar-brand" href="index.html"> QUE RICO! </a>
       <!-- <RouterLink to="/" class="navbar-brand"> QUE RICO!</RouterLink> -->
@@ -66,11 +65,11 @@ const authStore = useAuthStore();
             <li class="nav-item">
               <RouterLink to="/detalles" class="nav-link click-scroll">Detalles</RouterLink>
             </li>
-            <li class="nav-item ">
-              <RouterLink to="/repartidor" class="nav-link click-scroll " >Repartidor</RouterLink>
+            <li class="nav-item">
+              <RouterLink to="/repartidor" class="nav-link click-scroll">Repartidor</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/valoraciones" class="nav-link click-scroll " >Valoraciones</RouterLink>
+              <RouterLink to="/valoraciones" class="nav-link click-scroll">Valoraciones</RouterLink>
             </li>
             <li class="nav-item">
               <RouterLink to="/pago" class="nav-link click-scroll">Pagos</RouterLink>
@@ -83,14 +82,17 @@ const authStore = useAuthStore();
             </li>
           </slot>
         </ul>
-        <RouterLink v-if="!authStore.token" to="/login" class="btn custom-btn d-lg-block d-none"
-          >Iniciar Sesión</RouterLink
+        <RouterLink
+          v-if="!authStore.token"
+          to="/login"
+          class="btn custom-btn d-lg-block d-none custom-link"
+          style="color: white"
         >
-        <a v-else @click="authStore.logout()" class="btn custom-btn d-lg-block d-none">Salir</a>
+          Iniciar Sesión
+        </RouterLink>
+
+        <a v-else @click="authStore.logout()" class="btn custom-btn d-lg-block d-none" style="color: white">Salir</a>
       </div>
     </div>
   </nav>
 </template>
-
-
-
