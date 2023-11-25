@@ -2,6 +2,16 @@
 import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
+import type { Pedido } from '@/models/pedido'
+
+var pedido = ref<Pedido[]>([])
+async function getPedidos() {
+  pedido.value = await http.get('pedido').then((response) => response.data)
+}
+
+onMounted(() => {
+  getPedidos()
+})
 
 const props = defineProps<{
   ENDPOINT_API: string
@@ -25,9 +35,9 @@ async function editarPlatillo() {
 
 async function getPlatillo() {
   await http.get(`${ENDPOINT}/${id}`).then((response) => {
-    ;(nombre.value = response.data.nombre), 
-    (precio.value = response.data.precio),
-    (idPedido.value = response.data.idPedido)
+    ;(nombre.value = response.data.nombre),
+      (precio.value = response.data.precio),
+      (idPedido.value = response.data.idPedido)
   })
 }
 
@@ -41,6 +51,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <br /><br /><br />
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -48,13 +59,14 @@ onMounted(() => {
         <li class="breadcrumb-item">
           <RouterLink to="/platillos">Platillos</RouterLink>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">Editar</li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: black">
+          Editar Platillo
+        </li>
       </ol>
     </nav>
 
-    <br><br><br>
     <div class="row">
-      <h2>Editar Platillos</h2>
+      <h2>Editar Platillo</h2>
     </div>
 
     <div class="row">
@@ -68,8 +80,12 @@ onMounted(() => {
           <label for="precio">Precio</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="number" class="form-control" v-model="idPedido" placeholder="idPedido" required />
-          <label for="idPedido">idPedido</label>
+          <select v-model="idPedido" class="form-select">
+            <option v-for="pedidos in pedido" :value="pedidos.id">
+              {{ pedidos.nombreC }}
+            </option>
+          </select>
+          <label for="pedidos">Nombre del Cliente</label>
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
