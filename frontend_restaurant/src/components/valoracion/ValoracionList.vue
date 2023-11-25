@@ -21,7 +21,7 @@ function toEdit(id: number) {
 }
 
 async function toDelete(id: number) {
-  var r = confirm('¿Está seguro que se desea eliminar la valoracion?')
+  var r = confirm('¿Está seguro que se desea eliminar la valoración?')
   if (r == true) {
     await http.delete(`${ENDPOINT}/${id}`).then(() => getValoracions())
   }
@@ -33,6 +33,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <br /><br /><br />
   <div class="container">
     <!--div general con bootstrap con diseño-->
     <nav aria-label="breadcrumb">
@@ -41,11 +42,11 @@ onMounted(() => {
         <!--//clase propias de botstrap-->
         <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
         <!--//clase propias de botstrap-->
-        <li class="breadcrumb-item active" aria-current="page">Valoracion</li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: black">Valoracion</li>
         <!--//clase propias de botstrap-->
       </ol>
     </nav>
-    <br><br><br>               
+
     <div class="row">
       <h2>Lista de Valoraciones</h2>
       <div class="col-12">
@@ -60,22 +61,29 @@ onMounted(() => {
       <!--tablas propias de bottstrap-->
       <table class="table table-bordered">
         <thead>
-          <tr>
-            <th scope="col">N°</th>
-            <th scope="col">Descripción</th>
-            <th scope="col">IdPlatillo</th>
-            <th scope="col">IdPedido</th>
-            <th scope="col">Editar/Cancelar</th>
+          <tr style="background-color: black">
+            <th scope="col" style="color: #e49e48">N°</th>
+            <th scope="col" style="color: #e49e48">Registro de la Valoración</th>
+            <th scope="col" style="color: #e49e48">Nombre del Platillo</th>
+            <th scope="col" style="color: #e49e48">Nombre del Repartidor</th>
+            <th scope="col" style="color: #e49e48">Descripción</th>
+            <th scope="col" style="color: #E49E48;">Editar/Cancelar</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(valoracion, index) in valoraciones" :key="valoracion.id">
+          <tr
+            v-for="(valoracion, index) in valoraciones"
+            :key="valoracion.id"
+            style="background-color: black"
+          >
             <!--el singular solo es una variable-->
-            <th scope="row">{{ index + 1 }}</th>
+            <th scope="row" style="color: #f8cb2e">{{ index + 1 }}</th>
             <!--cuando el intex comienza en 0 le damos mas 1-->
-            <td>{{ valoracion.descripcion }}</td>
-            <td>{{ valoracion.idPlatillo }}</td>
-            <td>{{ valoracion.idRepartidor }}</td>
+            <td align="center" style="color: #f8cb2e">{{ valoracion.id }}</td>
+            <td style="color: #f8cb2e">{{ valoracion.platillos.nombre }}</td>
+            <td style="color: #f8cb2e">{{ valoracion.repartidor.nombreR }}</td>
+            <td style="color: #f8cb2e">{{ valoracion.descripcion }}</td>
+
             <td>
               <button class="btn text-success" @click="toEdit(valoracion.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" />

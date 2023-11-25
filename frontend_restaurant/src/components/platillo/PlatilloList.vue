@@ -69,7 +69,7 @@ onMounted(() => {
             <th scope="col" style="color: #e49e48">Nombre del Cliente</th>
             <th scope="col" style="color: #e49e48">Nombre del Platillo</th>
             <th scope="col" style="color: #e49e48">Precio</th>
-            <th scope="col">Editar/Cancelar</th>
+            <th scope="col" style="color: #E49E48;">Editar/Cancelar</th>
           </tr>
         </thead>
         <tbody>

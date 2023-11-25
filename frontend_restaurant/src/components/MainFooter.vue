@@ -92,7 +92,7 @@
           <h5 class="site-footer-title mb-3">Ubicación</h5>
 
           <p class="text-white d-flex mt-3 mb-2">
-            Sucre=Bolivia
+            Sucre-Bolivia
           </p>
         </div>
       </div>

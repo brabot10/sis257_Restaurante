@@ -2,7 +2,25 @@
 import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
+import type { Repartidor } from '@/models/repartidor'
+import type { Platillo } from '@/models/platillo'
 
+var platillos = ref<Platillo[]>([])
+async function getPlatillo() {
+  platillos.value = await http.get('platillos').then((response) => response.data)
+}
+
+onMounted(() => {
+  getPlatillo()
+})
+var repartidores = ref<Repartidor[]>([])
+async function getRepartidor() {
+  repartidores.value = await http.get('repartidor').then((response) => response.data)
+}
+
+onMounted(() => {
+  getRepartidor()
+})
 const props = defineProps<{
   ENDPOINT_API: string
 }>()
@@ -41,6 +59,8 @@ onMounted(() => {
 </script>
 
 <template>
+
+  <br><br><br>
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -48,13 +68,12 @@ onMounted(() => {
         <li class="breadcrumb-item">
           <RouterLink to="/valoraciones">Valoraciones</RouterLink>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">Editar</li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: black">Editar Valoración</li>
       </ol>
     </nav>
 
-    <br><br><br>
     <div class="row">
-      <h2>Editar Valoraciones</h2>
+      <h2>Editar Valoración</h2>
     </div>
 
     <div class="row">
@@ -70,28 +89,25 @@ onMounted(() => {
           <label for="descripcion">Descripción</label>
         </div>
         <div class="form-floating mb-3">
-          <input
-            type="number"
-            class="form-control"
-            v-model="idPlatillo"
-            placeholder="IdPlatillo"
-            required
-          />
-          <label for="idPlatillo">IdPlatillo</label>
+          <select v-model="idPlatillo" class="form-select">
+            <option v-for="platillo in platillos" :value="platillo.id">
+              {{ platillo.nombre }}
+            </option>
+          </select>
+          <label for="platillo">Nombre del Platillo</label>
         </div>
+
         <div class="form-floating mb-3">
-          <input
-            type="number"
-            class="form-control"
-            v-model="idRepartidor"
-            placeholder="IdRepartidor"
-            required
-          />
-          <label for="idRepartidor">IdRepartidor</label>
+          <select v-model="idRepartidor" class="form-select">
+            <option v-for="repartidor in repartidores" :value="repartidor.id">
+              {{ repartidor.nombreR }}
+            </option>
+          </select>
+          <label for="repartidor">Nombre del Repartidor</label>
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
-            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Guardar
+            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Guardar Valoración
           </button>
         </div>
       </form>
