@@ -56,6 +56,7 @@ onMounted(() => {
         <thead>
           <tr>
             <th scope="col">N°</th>
+            <th scope="col"># del Repartidor</th>
             <th scope="col">Nombre del Repartidor</th>
             <th scope="col">Carnet</th>
             <th scope="col">Edad</th> 
@@ -65,6 +66,7 @@ onMounted(() => {
         <tbody>
           <tr v-for="(repartidor, index) in repartidores" :key="repartidor.id"><!--el singular solo es una variable-->
             <th scope="row">{{ index + 1 }}</th><!--cuando el intex comienza en 0 le damos mas 1-->
+            <td align="center">{{ repartidor.id }}</td>
             <td>{{ repartidor.nombreR }}</td>
             <td>{{ repartidor.carnet }}</td>
             <td>{{ repartidor.edad }}</td>

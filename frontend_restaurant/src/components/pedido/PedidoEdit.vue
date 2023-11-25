@@ -2,7 +2,16 @@
 import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
+import type { Repartidor } from '@/models/repartidor'
 
+var repartidores = ref<Repartidor[]>([])
+async function getRepartidor() {
+  repartidores.value = await http.get('repartidor').then((response) => response.data)
+}
+
+onMounted(() => {
+  getRepartidor()
+})
 const props = defineProps<{
   ENDPOINT_API: string
 }>()
@@ -31,7 +40,7 @@ async function editarPedido() {
 
 async function getPedido() {
   await http.get(`${ENDPOINT}/${id}`).then((response) => {
-      ;(nombreC.value = response.data.nombreC),
+    ;(nombreC.value = response.data.nombreC),
       (direccion.value = response.data.direccion),
       (nombreProducto.value = response.data.nombreProducto),
       (cantidad.value = response.data.cantidad),
@@ -50,18 +59,20 @@ onMounted(() => {
 </script>
 
 <template>
+  <br /><br /><br />
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
+        <li class="breadcrumb-item">
+          <RouterLink to="/">Inicio</RouterLink>
+        </li>
         <li class="breadcrumb-item">
           <RouterLink to="/pedido">Pedidos</RouterLink>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">Editar</li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: black">Editar Pedido</li>
       </ol>
     </nav>
 
-    <br><br><br>
     <div class="row">
       <h2>Editar Pedido</h2>
     </div>
@@ -119,20 +130,19 @@ onMounted(() => {
           />
           <label for="fechaPedido">fecha del Pedido</label>
         </div>
+
         <div class="form-floating mb-3">
-          <input
-            type="number"
-            class="form-control"
-            v-model="idRepartidor"
-            placeholder="idRepartidor"
-            required
-          />
-          <label for="idRepartidor">idRepartidor</label>
+          <select v-model="idRepartidor" class="form-select">
+            <option v-for="repartidor in repartidores" :value="repartidor.id">
+              {{ repartidor.nombreR }}
+            </option>
+          </select>
+          <label for="repartidor"> Nombre del Repartidor</label>
         </div>
 
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
-            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Guardar
+            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Guardar Pedido
           </button>
         </div>
       </form>

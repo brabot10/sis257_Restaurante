@@ -33,6 +33,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <br /><br /><br />
   <div class="container">
     <!--div general con bootstrap con diseño-->
     <nav aria-label="breadcrumb">
@@ -41,12 +42,11 @@ onMounted(() => {
         <!--//clase propias de botstrap-->
         <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
         <!--//clase propias de botstrap-->
-        <li class="breadcrumb-item active" aria-current="page">Detalle</li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: black">Detalle</li>
         <!--//clase propias de botstrap-->
       </ol>
     </nav>
 
-    <br><br><br>
     <div class="row">
       <h2>Lista de Detalles</h2>
       <div class="col-12">
@@ -61,26 +61,32 @@ onMounted(() => {
       <!--tablas propias de bottstrap-->
       <table class="table table-bordered">
         <thead>
-          <tr>
-            <th scope="col">N°</th>
-            <th scope="col">Estado de la Dirección</th>
-            <th scope="col">Puntuación</th>
-            <th scope="col">Credibilidad</th>
-            <th scope="col">Amabilidad</th>
-            <th scope="col">IdPedido</th>
-            <th scope="col">Editar/Cancelar</th>
+          <tr style="background-color: black">
+            <th scope="col" style="color: #e49e48">N°</th>
+            <th scope="col" style="color: #E49E48;">Detalles en Orden</th>
+            <th scope="col" style="color: #e49e48">Nombre del Cliente</th>
+            <th scope="col" style="color: #e49e48">Estado de la Dirección</th>
+            <th scope="col" style="color: #e49e48">Puntuación</th>
+            <th scope="col" style="color: #e49e48">Credibilidad</th>
+            <th scope="col" style="color: #e49e48">Amabilidad</th>
+            <th scope="col" style="color: #e49e48">Editar/Cancelar</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(detalle, index) in detalles" :key="detalle.id">
+          <tr
+            v-for="(detalle, index) in detalles"
+            :key="detalle.id"
+            style="background-color: black"
+          >
             <!--el singular solo es una variable-->
-            <th scope="row">{{ index + 1 }}</th>
+            <th scope="row" style="color: #f8cb2e">{{ index + 1 }}</th>
             <!--cuando el intex comienza en 0 le damos mas 1-->
-            <td>{{ detalle.direccionEstado }}</td>
-            <td>{{ detalle.puntuacion }}</td>
-            <td>{{ detalle.credibilidad }}</td>
-            <td>{{ detalle.amabilidad }}</td>
-            <td>{{ detalle.idPedido }}</td>
+            <td align="center" style="color: #F8CB2E;">{{ detalle.id }}</td>
+            <td style="color: #f8cb2e">{{ detalle.pedidos.nombreC }}</td>
+            <td style="color: #f8cb2e">{{ detalle.direccionEstado }}</td>
+            <td style="color: #f8cb2e">{{ detalle.puntuacion }}</td>
+            <td style="color: #f8cb2e">{{ detalle.credibilidad }}</td>
+            <td style="color: #f8cb2e">{{ detalle.amabilidad }}</td>
             <td>
               <button class="btn text-success" @click="toEdit(detalle.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" />

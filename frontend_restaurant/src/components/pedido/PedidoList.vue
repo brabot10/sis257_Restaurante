@@ -9,10 +9,10 @@ const props = defineProps<{
 }>()
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
-var pedido = ref<Pedido[]>([])
+var pedidos = ref<Pedido[]>([])
 
 async function getPedido() {
-  pedido.value = await http.get(ENDPOINT).then((response) => response.data)
+  pedidos.value = await http.get(ENDPOINT).then((response) => response.data)
 }
 
 function toEdit(id: number) {
@@ -32,17 +32,21 @@ onMounted(() => {
 </script>
 
 <template>
+  <br><br><br>
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
-        <li class="breadcrumb-item active" aria-current="page">Pedido</li>
+        <li class="breadcrumb-item">
+          <RouterLink to="/">Inicio</RouterLink>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: black;">
+          Pedido
+        </li>
       </ol>
     </nav>
 
-    <br><br><br>
     <div class="row">
-      <h2>Lista de Pedidos</h2>
+      <h2 >Lista de Pedidos</h2>
       <div class="col-12">
         <RouterLink to="/pedido/crear">
           <font-awesome-icon icon="fa-solid fa-plus" />Crear Nuevo Pedido
@@ -53,31 +57,37 @@ onMounted(() => {
     <div class="table-responsive">
       <table class="table table-bordered">
         <thead>
-          <tr>
-            <th scope="col">N°</th>
-            <th scope="col">Nombre Cliente</th>
-            <th scope="col">Direccion</th>
-            <th scope="col">Nombre del Producto</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Fecha del Pedido</th>
-            <th scope="col">idRepartidor</th> 
-            <th scope="col">Editar/Cancelar</th>
+          <tr style="background-color: black;">
+            <th scope="col" style="color: #E49E48;">N°</th>
+            <th scope="col" style="color: #E49E48;">Orden del Pedido</th>
+            <th scope="col" style="color: #E49E48;">Nombre del Repartidor</th>
+            <th scope="col" style="color: #E49E48;">Nombre Cliente</th>
+            <th scope="col" style="color: #E49E48;">Direccion</th>
+            <th scope="col" style="color: #E49E48;">Nombre del Producto</th>
+            <th scope="col" style="color: #E49E48;">Cantidad</th>
+            <!-- <th scope="col" style="color: #E49E48;">
+              <time datetime="08/10/2023">Fecha del Pedido</time> 
+            </th> -->
+            <th scope="col" style="color: #E49E48;">Fecha del Pedido</th> 
+            <th scope="col" style="color: #E49E48;">Editar/Cancelar</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(pedidos, index) in pedido" :key="pedidos.id">
-            <th scope="row">{{ index + 1 }}</th>
-            <td>{{ pedidos.nombreC }}</td>
-            <td>{{ pedidos.direccion }}</td>
-            <td>{{ pedidos.nombreProducto}}</td>
-            <td>{{ pedidos.cantidad}}</td>
-            <td>{{ pedidos.fechaPedido}}</td>
-            <td>{{ pedidos.idRepartidor }}</td>
+          <tr v-for="(pedido, index, ) in pedidos" :key="pedido.id" style="background-color: black;">
+            <th scope="row" style="color: #F8CB2E;">{{ index + 1 }}</th>
+            <td align="center" style="color: #F8CB2E;">{{ pedido.id }}</td>
+            <td style="color: #F8CB2E;">{{ pedido.repartidor.nombreR }}</td>
+            <td style="color: #F8CB2E;">{{ pedido.nombreC }}</td>
+            <td style="color: #F8CB2E;">{{ pedido.direccion }}</td>
+            <td style="color: #F8CB2E;">{{ pedido.nombreProducto}}</td>
+            <td style="color: #F8CB2E;">{{ pedido.cantidad}}</td>
+            <td style="color: #F8CB2E;">{{ pedido.fechaPedido}}</td>
+            
             <td>
-              <button class="btn text-success" @click="toEdit(pedidos.id)">
+              <button class="btn text-success" @click="toEdit(pedido.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" />
               </button>
-              <button class="btn text-danger" @click="toDelete(pedidos.id)">
+              <button class="btn text-danger" @click="toDelete(pedido.id)">
                 <font-awesome-icon icon="fa-solid fa-trash" />
               </button>
             </td>

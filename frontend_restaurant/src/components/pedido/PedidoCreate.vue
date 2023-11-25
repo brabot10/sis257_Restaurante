@@ -1,8 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
+import type { Repartidor } from '@/models/repartidor'
 
+var repartidores = ref<Repartidor[]>([])
+async function getRepartidor() {
+  repartidores.value = await http.get('repartidor').then((response) => response.data)
+}
+
+onMounted(() => {
+  getRepartidor()
+})
 const props = defineProps<{
   ENDPOINT_API: string
 }>()
@@ -17,13 +26,13 @@ const idRepartidor = ref('')
 
 async function crearPedido() {
   await http
-    .post(ENDPOINT, { 
+    .post(ENDPOINT, {
       nombreC: nombreC.value,
       direccion: direccion.value,
       nombreProducto: nombreProducto.value,
       cantidad: cantidad.value,
       fechaPedido: fechaPedido.value,
-      idRepartidor: idRepartidor.value 
+      idRepartidor: idRepartidor.value
     })
     .then(() => router.push('/pedido'))
 }
@@ -34,18 +43,20 @@ function goBack() {
 </script>
 
 <template>
+  <br /><br /><br />
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
+        <li class="breadcrumb-item">
+          <RouterLink to="/">Inicio</RouterLink>
+        </li>
         <li class="breadcrumb-item">
           <RouterLink to="/pedido">Pedido</RouterLink>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">Crear</li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: black">Crear Pedido</li>
       </ol>
     </nav>
 
-    <br><br><br>
     <div class="row">
       <h2>Crear Nuevo Pedido</h2>
     </div>
@@ -53,7 +64,13 @@ function goBack() {
     <div class="row">
       <form @submit.prevent="crearPedido">
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" v-model="direccion" placeholder="direccion" required />
+          <input
+            type="text"
+            class="form-control"
+            v-model="direccion"
+            placeholder="direccion"
+            required
+          />
           <label for="direccion">Direccion</label>
         </div>
         <div class="form-floating">
@@ -66,6 +83,7 @@ function goBack() {
           />
           <label for="nombreProducto">Nombre del producto</label>
         </div>
+
         <div class="form-floating">
           <input
             type="text"
@@ -76,6 +94,7 @@ function goBack() {
           />
           <label for="nombreC">Nombre Cliente</label>
         </div>
+
         <div class="form-floating">
           <input
             type="number"
@@ -86,18 +105,30 @@ function goBack() {
           />
           <label for="cantidad">Cantidad</label>
         </div>
+
         <div class="form-floating mb-3">
-          <input type="date" class="form-control" v-model="fechaPedido" placeholder="fechaPedido" required />
+          <input
+            type="date"
+            class="form-control"
+            v-model="fechaPedido"
+            placeholder="fechaPedido"
+            required
+          />
           <label for="fechaPedido">fecha del Pedido</label>
-        </div> 
+        </div>
+
         <div class="form-floating mb-3">
-          <input type="number" class="form-control" v-model="idRepartidor" placeholder="idRepartidor" required />
-          <label for="idRepartidor">idRepartidor</label>
-        </div> 
-        
+          <select v-model="idRepartidor" class="form-select">
+            <option v-for="repartidor in repartidores" :value="repartidor.id">
+              {{ repartidor.nombreR }}
+            </option>
+          </select>
+          <label for="repartidor">Nombre del Repartidor</label>
+        </div>
+
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
-            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Crear
+            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Crear Pedido
           </button>
         </div>
       </form>

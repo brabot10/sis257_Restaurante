@@ -32,16 +32,19 @@ onMounted(() => {
 })
 </script>
 
+
 <template>
+  <br><br><br>
   <div class="container"><!--div general con bootstrap con diseño-->
     <nav aria-label="breadcrumb"><!--//clase propias de botstrap-->
       <ol class="breadcrumb"><!--//clase propias de botstrap-->
-        <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li><!--//clase propias de botstrap-->
+        <li class="breadcrumb-item">
+          <RouterLink to="/">Inicio</RouterLink>
+        </li><!--//clase propias de botstrap-->
         <li class="breadcrumb-item active" aria-current="page">Platillo</li><!--//clase propias de botstrap--> 
       </ol>
     </nav>
     
-    <br><br><br>
     <div class="row">
       <h2>Lista de Platillos</h2>
       <div class="col-12">
