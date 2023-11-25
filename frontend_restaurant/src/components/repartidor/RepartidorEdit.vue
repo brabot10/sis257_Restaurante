@@ -41,6 +41,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <br /><br /><br />
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -48,11 +49,10 @@ onMounted(() => {
         <li class="breadcrumb-item">
           <RouterLink to="/repartidor">Repartidor</RouterLink>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">Editar</li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: black">Editar Repartidor</li>
       </ol>
     </nav>
 
-    <br><br><br>
     <div class="row">
       <h2>Editar Repartidor</h2>
     </div>
@@ -60,7 +60,13 @@ onMounted(() => {
     <div class="row">
       <form @submit.prevent="editarPlatillo">
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" v-model="nombreR" placeholder="NombreR" required />
+          <input
+            type="text"
+            class="form-control"
+            v-model="nombreR"
+            placeholder="NombreR"
+            required
+          />
           <label for="nombreR">Nombre</label>
         </div>
         <div class="form-floating mb-3">
@@ -79,7 +85,7 @@ onMounted(() => {
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
-            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Guardar
+            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Guardar Repartidor
           </button>
         </div>
       </form>

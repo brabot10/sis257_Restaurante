@@ -2,14 +2,12 @@
 import { ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
-//import type { Pedido } from '@/models/pedido'
 
 const props = defineProps<{
   ENDPOINT_API: string
 }>()
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
-//const pedido = ref<Pedido[]>([])
 const nombreR = ref('')
 const carnet = ref('')
 const edad = ref('')
@@ -30,6 +28,7 @@ function goBack() {
 </script>
 
 <template>
+  <br /><br /><br />
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -37,11 +36,11 @@ function goBack() {
         <li class="breadcrumb-item">
           <RouterLink to="/repartidor">Repartidores</RouterLink>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">Crear</li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: black">
+          Crear Repartidor</li>
       </ol>
     </nav>
 
-    <br><br><br>
     <div class="row">
       <h2>Crear Nuevo Repartidor</h2>
     </div>
@@ -50,7 +49,13 @@ function goBack() {
       <form @submit.prevent="crearRepartidor">
         <!--cuando yo aprete guardar me llma al metodo crearRepartidor-->
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" v-model="nombreR" placeholder="NombreR" required />
+          <input
+            type="text"
+            class="form-control"
+            v-model="nombreR"
+            placeholder="NombreR"
+            required
+          />
           <label for="nombreR">Nombre</label>
         </div>
         <div class="form-floating mb-3">
@@ -66,11 +71,11 @@ function goBack() {
         <div class="form-floating mb-3">
           <input type="number" class="form-control" v-model="edad" placeholder="Edad" required />
           <label for="edad">edad</label>
-        </div> 
+        </div>
 
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
-            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Crear
+            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Crear Repartidor
           </button>
         </div>
       </form>
