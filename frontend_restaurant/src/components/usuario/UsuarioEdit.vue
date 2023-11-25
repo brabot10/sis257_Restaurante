@@ -10,7 +10,7 @@ const props = defineProps<{
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
 const usuario = ref('')
-const clave = ref('')
+//const clave = ref('')
 const email = ref('')
 const id = router.currentRoute.value.params['id']
 
@@ -18,8 +18,8 @@ async function editarUsuario() {
   await http
     .patch(`${ENDPOINT}/${id}`, {
       usuario: usuario.value,
-      clave: clave.value,
-      email: email.value,
+      //clave: clave.value,
+      email: email.value
     })
     .then(() => router.push('/usuarios'))
 }
@@ -27,7 +27,7 @@ async function editarUsuario() {
 async function getUsuario() {
   await http.get(`${ENDPOINT}/${id}`).then((response) => {
     usuario.value = response.data.usuario
-    clave.value = response.data.clave
+    //clave.value = response.data.clave
     email.value = response.data.email
   })
 }
@@ -42,6 +42,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <br /><br /><br />
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -51,7 +52,7 @@ onMounted(() => {
         <li class="breadcrumb-item">
           <RouterLink to="/usuarios">Usuarios</RouterLink>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">Editar</li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: black" >Editar Usuario</li>
       </ol>
     </nav>
 
@@ -62,19 +63,25 @@ onMounted(() => {
     <div class="row">
       <form @submit.prevent="editarUsuario">
         <div class="form-floating mb-3">
-          <input type="string" class="form-control" v-model="usuario" placeholder="usuario" required />
+          <input
+            type="string"
+            class="form-control"
+            v-model="usuario"
+            placeholder="usuario"
+            required
+          />
           <label for="usuario">usuario</label>
         </div>
-        <div class="form-floating mb-3">
+        <!-- <div class="form-floating mb-3">
           <input type="string" class="form-control" v-model="clave" placeholder="clave" required />
           <label for="clave">clave</label>
-        </div>
+        </div> -->
         <div class="form-floating mb-3">
           <input type="string" class="form-control" v-model="email" placeholder="Email" required />
           <label for="email">Email</label>
         </div>
         <div class="text-center mt-3">
-          <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+          <button type="submit" class="btn btn-primary btn-lg">Guardar Usuario</button>
         </div>
       </form>
     </div>

@@ -2,7 +2,16 @@
 import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
+import type { Repartidor } from '@/models/repartidor'
 
+var repartidores = ref<Repartidor[]>([])
+async function getRepartidor() {
+  repartidores.value = await http.get('repartidor').then((response) => response.data)
+}
+
+onMounted(() => {
+  getRepartidor()
+})
 const props = defineProps<{
   ENDPOINT_API: string
 }>()
@@ -44,6 +53,7 @@ onMounted(() => {
 </script>
 
 <template>
+      <br><br><br>
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -51,13 +61,13 @@ onMounted(() => {
         <li class="breadcrumb-item">
           <RouterLink to="/pago">Pago</RouterLink>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">Editar</li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: black">Editar Registro de Pagos</li>
       </ol>
     </nav>
 
-    <br><br><br>
+
     <div class="row">
-      <h2>Editar Pago</h2>
+      <h2>Editar Registro de Pagos</h2>
     </div>
 
     <div class="row">
@@ -78,21 +88,19 @@ onMounted(() => {
         </div>
         <div class="form-floating mb-3">
           <input type="number" class="form-control" v-model="total" placeholder="Total" required />
-          <label for="total">total</label>
+          <label for="total">Total</label>
         </div>
         <div class="form-floating mb-3">
-          <input
-            type="number"
-            class="form-control"
-            v-model="idRepartidor"
-            placeholder="IdRepartidor"
-            required
-          />
-          <label for="idRepartidor">idRepartidor</label>
+          <select v-model="idRepartidor" class="form-select">
+            <option v-for="repartidor in repartidores" :value="repartidor.id">
+              {{ repartidor.nombreR }}
+            </option>
+          </select>
+          <label for="repartidor"> Nombre del Repartidor</label>
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
-            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Guardar
+            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Guardar Registro
           </button>
         </div>
       </form>

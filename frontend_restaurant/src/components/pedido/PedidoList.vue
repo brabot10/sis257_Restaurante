@@ -69,7 +69,7 @@ onMounted(() => {
               <time datetime="08/10/2023">Fecha del Pedido</time> 
             </th> -->
             <th scope="col" style="color: #E49E48;">Fecha del Pedido</th> 
-            <th scope="col" style="color: #E49E48;">Editar/Cancelar</th>
+            <th scope="col" style="color: #E49E48;">Editar/Eliminar</th>
           </tr>
         </thead>
         <tbody>

@@ -11,14 +11,14 @@ const props = defineProps<{
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
 const usuario = ref('')
-const clave = ref('')
+//const clave = ref('')
 const email = ref('')
 
 async function crearUsuario() {
   await http
     .post(ENDPOINT, {
       usuario: usuario.value,
-      clave: clave.value,
+      //clave: clave.value,
       email: email.value,
     })
     .then(() => router.push('/usuarios'))
@@ -52,10 +52,10 @@ function goBack() {
           <input type="string" class="form-control" v-model="usuario" placeholder="usuario" required />
           <label for="usuario">usuario</label>
         </div>
-        <div class="form-floating mb-3">
+        <!-- <div class="form-floating mb-3">
           <input type="string" class="form-control" v-model="clave" placeholder="clave" required />
           <label for="clave">clave</label>
-        </div>
+        </div> -->
         <div class="form-floating mb-3">
           <input type="string" class="form-control" v-model="email" placeholder="Email" required />
           <label for="email">Email</label>

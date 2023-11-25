@@ -23,7 +23,7 @@
             <h2 class="text-white mb-4">Historia</h2>
 
             <p class="text-white">
-              Había una vez un chef apasionado llamado Miguel, cuyo sueño siempre fue compartir su amor por la comida con el mundo. Después de años de experiencia en la industria culinaria, Miguel decidió hacer realidad su sueño y abrir su propio restaurante. Así nació "Las Delicias".El proceso de creación de Las Delicias fue un viaje emocionante. Miguel seleccionó cuidadosamente cada ingrediente, creando un menú que reflejara su creatividad y pasión por la cocina. Invirtió tiempo en encontrar proveedores locales que compartieran su compromiso con la calidad y la frescura.
+              Había una vez un chef apasionado llamado Miguel, cuyo sueño siempre fue compartir su amor por la comida con el mundo. Después de años de experiencia en la industria culinaria, Miguel decidió hacer realidad su sueño y abrir su propio restaurante. Así nació "QUE RICO!".El proceso de creación de Las Delicias fue un viaje emocionante. Miguel seleccionó cuidadosamente cada ingrediente, creando un menú que reflejara su creatividad y pasión por la cocina. Invirtió tiempo en encontrar proveedores locales que compartieran su compromiso con la calidad y la frescura.
             </p>
 
             <p class="text-white">

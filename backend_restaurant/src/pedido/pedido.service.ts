@@ -8,8 +8,6 @@ import { UpdatePedidoDto } from './dto/update-pedido.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PedidoEntity } from './entities/pedido.entity';
 import { Repository } from 'typeorm';
-//import { RepartidorEntity } from 'src/repartidor/entities/repartidor.entity';
-//import { RepartidorEntity } from 'src/repartidor/entities/repartidor.entity';
 
 @Injectable()
 export class PedidoService {
@@ -21,7 +19,6 @@ export class PedidoService {
     const existe = await this.pedidoRepository.findOneBy({
       idRepartidor: createPedidoDto.idRepartidor,
       nombreProducto: createPedidoDto.nombreProducto.trim(),
-      //repartidor: { id: createPedidoDto.idRepartidor },
     });
 
     if (existe) {

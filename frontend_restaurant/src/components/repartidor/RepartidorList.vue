@@ -67,7 +67,7 @@ onMounted(() => {
             <th scope="col" style="color: #e49e48">Nombre del Repartidor</th>
             <th scope="col" style="color: #e49e48">Carnet</th>
             <th scope="col" style="color: #e49e48">Edad</th>
-            <th scope="col" style="color: #e49e48">Editar/Cancelar</th>
+            <th scope="col" style="color: #e49e48">Editar/Eliminar</th>
           </tr>
         </thead>
         <tbody>

@@ -69,7 +69,7 @@ onMounted(() => {
             <th scope="col" style="color: #e49e48">Puntuación</th>
             <th scope="col" style="color: #e49e48">Credibilidad</th>
             <th scope="col" style="color: #e49e48">Amabilidad</th>
-            <th scope="col" style="color: #E49E48;">Editar/Cancelar</th>
+            <th scope="col" style="color: #e49e48">Editar/Eliminar</th>
           </tr>
         </thead>
         <tbody>
