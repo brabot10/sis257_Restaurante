@@ -27,6 +27,9 @@ export class Detalle {
   @Column({ name: 'id_pedido' })
   idPedido: number;
 
+  @Column({ name: 'id_pedido' })
+  idCiente: number;
+
   @ManyToOne(() => PedidoEntity, pedidos => pedidos.detalles)
   @JoinColumn({ name: 'id_pedido', referencedColumnName: 'id' })
   pedidos: PedidoEntity;
