@@ -9,8 +9,6 @@ import { Detalle } from './entities/detalle.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-
-
 @Injectable()
 export class DetallesService {
   constructor(
@@ -39,15 +37,15 @@ export class DetallesService {
   }
 
   async findAll(): Promise<Detalle[]> {
-    return this.detalleRepository.find({ 
-      relations: { pedidos : true }, //referencia al entity
+    return this.detalleRepository.find({
+      relations: { pedidos: true }, //referencia al entity
     });
   }
 
   async findOne(id: number): Promise<Detalle> {
-    const detalle = await this.detalleRepository.findOne({ 
+    const detalle = await this.detalleRepository.findOne({
       where: { id },
-      relations: { pedidos : true },
+      relations: { pedidos: true },
     });
 
     if (!detalle) {
@@ -57,7 +55,10 @@ export class DetallesService {
     return detalle;
   }
 
-  async update(id: number, updateDetalleDto: UpdateDetalleDto): Promise<Detalle> {
+  async update(
+    id: number,
+    updateDetalleDto: UpdateDetalleDto,
+  ): Promise<Detalle> {
     const detalle = await this.detalleRepository.findOneBy({ id });
     if (!detalle) {
       throw new NotFoundException(`El detalle ${id} no existe.`);

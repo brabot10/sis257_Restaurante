@@ -7,6 +7,6 @@ import { PedidoEntity } from './entities/pedido.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([PedidoEntity])],
   controllers: [PedidoController],
-  providers: [PedidoService]
+  providers: [PedidoService],
 })
 export class PedidoModule {}

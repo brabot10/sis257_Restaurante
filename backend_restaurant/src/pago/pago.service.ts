@@ -51,10 +51,7 @@ export class PagoService {
     return pago;
   }
 
-  async update(
-    id: number,
-    updatePagoDto: UpdatePagoDto,
-  ): Promise<Pago> {
+  async update(id: number, updatePagoDto: UpdatePagoDto): Promise<Pago> {
     const pago = await this.pagoRepository.findOneBy({ id });
     if (!pago) {
       throw new NotFoundException(`El pago no existe ${id}`);

@@ -36,15 +36,15 @@ export class PlatillosService {
   }
 
   async findAll(): Promise<PlatilloEntity[]> {
-    return this.platilloRepository.find({ 
-      relations: { pedidos : true }, 
+    return this.platilloRepository.find({
+      relations: { pedidos: true },
     });
   }
 
   async findOne(id: number): Promise<PlatilloEntity> {
-    const platillo = await this.platilloRepository.findOne({ 
+    const platillo = await this.platilloRepository.findOne({
       where: { id },
-      relations: { pedidos : true },
+      relations: { pedidos: true },
     });
 
     if (!platillo) {
@@ -54,7 +54,10 @@ export class PlatillosService {
     return platillo;
   }
 
-  async update(id: number, updatePlatilloDto: UpdatePlatilloDto): Promise<PlatilloEntity> {
+  async update(
+    id: number,
+    updatePlatilloDto: UpdatePlatilloDto,
+  ): Promise<PlatilloEntity> {
     const platillo = await this.platilloRepository.findOneBy({ id });
     if (!platillo) {
       throw new NotFoundException(`El platillo ${id} no existe.`);

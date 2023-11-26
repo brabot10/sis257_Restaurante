@@ -11,10 +11,7 @@ import {
 import { PlatillosService } from './platillos.service';
 import { CreatePlatilloDto } from './dto/create-platillo.dto';
 import { UpdatePlatilloDto } from './dto/update-platillo.dto';
-import {
-  ApiBearerAuth,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @ApiTags('Platillos')

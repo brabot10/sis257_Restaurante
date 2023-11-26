@@ -7,6 +7,6 @@ import { Valoracion } from './entities/valoracion.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([Valoracion])],
   controllers: [ValoracionesController],
-  providers: [ValoracionesService]
+  providers: [ValoracionesService],
 })
 export class ValoracionesModule {}
