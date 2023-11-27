@@ -1,5 +1,4 @@
 import { PedidoEntity } from '../../pedido/entities/pedido.entity';
-import { ClienteEntity } from '../../pedido/entities/pedido.entity';
 import {
   Column,
   Entity,
@@ -34,4 +33,9 @@ export class Detalle {
   @ManyToOne(() => PedidoEntity, pedidos => pedidos.detalles)
   @JoinColumn({ name: 'id_pedido', referencedColumnName: 'id' })
   pedidos: PedidoEntity;
+
+  @ManyToOne(() => ClienteEntity, clientes => pedidos.detalles)
+  @JoinColumn({ name: 'id_pedido', referencedColumnName: 'id' })
+  pedidos: PedidoEntity;
+    clientes: any;
 }
