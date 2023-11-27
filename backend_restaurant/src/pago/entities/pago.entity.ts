@@ -16,7 +16,13 @@ export class Pago {
   mes: string;
 
   @Column({ type: 'varchar', length: 250, nullable: false })
-  tiempoExtra: string;
+  diasExtra: string;
+
+  @Column({ type: 'int', nullable: false })
+  pagoDia: number;
+
+  @Column({ type: 'int', nullable: false })
+  descuento: number;
 
   @Column({ type: 'int', nullable: false })
   total: number;

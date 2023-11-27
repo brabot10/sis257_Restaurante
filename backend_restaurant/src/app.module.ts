@@ -11,6 +11,7 @@ import { RepartidorModule } from './repartidor/repartidor.module';
 import { ValoracionesModule } from './valoraciones/valoraciones.module';
 import { PagoModule } from './pago/pago.module';
 import { DetallesModule } from './detalles/detalles.module';
+import { ClientesModule } from './clientes/clientes.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { DetallesModule } from './detalles/detalles.module';
     PlatillosModule,
     ValoracionesModule,
     UsuarioModule,
+    ClientesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
