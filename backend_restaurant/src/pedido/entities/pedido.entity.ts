@@ -1,3 +1,4 @@
+import { ClienteEntity } from 'src/clientes/entities/cliente.entity';
 import { Detalle } from 'src/detalles/entities/detalle.entity';
 import { PlatilloEntity } from 'src/platillos/entities/platillo.entity';
 import { RepartidorEntity } from 'src/repartidor/entities/repartidor.entity';

@@ -1,11 +1,9 @@
 import { PedidoEntity } from 'src/pedido/entities/pedido.entity';
-import { Valoracion } from 'src/valoraciones/entities/valoracion.entity';
 import {
   Column,
   Entity,
   JoinColumn,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -17,14 +15,20 @@ export class PlatilloEntity {
   @Column({ type: 'varchar', length: 100, nullable: false })
   nombre: string;
 
+  @Column({ type: 'varchar', length: 150, nullable: false })
+  urlPlatillo: string;
+
   @Column({ type: 'int', nullable: false })
   precio: number;
 
+  @Column({ type: 'int', nullable: false })
+  tiempoPreparacion: number;
+
+  @Column({ type: 'int', nullable: false })
+  disponibilidad: number;
+
   @Column({ name: 'id_pedido' })
   idPedido: number;
-
-  @OneToMany(() => Valoracion, valoraciones => valoraciones.platillos)
-  valoraciones: Valoracion[];
 
   @ManyToOne(() => PedidoEntity, pedidos => pedidos.platillos)
   @JoinColumn({ name: 'id_pedido', referencedColumnName: 'id' })

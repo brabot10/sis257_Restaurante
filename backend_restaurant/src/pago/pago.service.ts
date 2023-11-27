@@ -19,7 +19,7 @@ export class PagoService {
   async create(createPagoDto: CreatePagoDto): Promise<Pago> {
     const existePago = await this.pagoRepository.findOneBy({
       mes: createPagoDto.mes.trim(),
-      tiempoExtra: createPagoDto.tiempoExtra.trim(),
+      diasExtra: createPagoDto.diasExtra.trim(),
       total: createPagoDto.total,
       idRepartidor: createPagoDto.idRepartidor,
     });
@@ -29,7 +29,9 @@ export class PagoService {
     }
     return this.pagoRepository.save({
       mes: createPagoDto.mes.trim(),
-      tiempoExtra: createPagoDto.tiempoExtra.trim(),
+      pagoDia: createPagoDto.pagoDia,
+      diasExtra: createPagoDto.diasExtra.trim(),
+      descuento: createPagoDto.descuento,
       total: createPagoDto.total,
       idRepartidor: createPagoDto.idRepartidor,
     });

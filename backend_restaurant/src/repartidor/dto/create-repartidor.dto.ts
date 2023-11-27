@@ -11,12 +11,15 @@ export class CreateRepartidorDto {
     message:
       'El campo nombre del repartidor  no debe ser mayor a 100 caracteres',
   })
-  readonly nombreR: string;
+  readonly nombreRepartidor: string;
 
   @ApiProperty()
-  @IsNotEmpty({ message: 'El campo duracion no de ser vacío' })
-  @IsNumber({}, { message: 'El campo duracion debe ser de tipo número' })
-  readonly carnet: number;
+  @IsNotEmpty({ message: 'El campo carnet de Identidad no de ser vacío' })
+  @IsNumber(
+    {},
+    { message: 'El campo carnet de identidad debe ser de tipo número' },
+  )
+  readonly carnetIdentidad: number;
 
   @ApiProperty()
   @IsNotEmpty({ message: 'El campo edad no de ser vacío' })
