@@ -33,7 +33,7 @@ export class CreatePedidoDto {
     {},
     { message: 'El campo fecha del Pedido debe ser de tipo fecha' },
   )
-  readonly horaPedido: TimeRanges;
+  readonly horaPedido: number;
 
   @ApiProperty({ example: '2005-05-01' })
   @IsDefined({ message: 'El campo fecha del Pedido no de ser vacío' })

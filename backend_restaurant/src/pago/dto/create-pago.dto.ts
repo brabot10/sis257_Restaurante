@@ -49,5 +49,5 @@ export class CreatePagoDto {
   @IsDefined({ message: 'El campo Repartidor debe estar definido' })
   @IsNumber({}, { message: 'El campo Repartidor debe ser de tipo numérico' })
   readonly idRepartidor: number;
-  diasExtra: any;
+
 }

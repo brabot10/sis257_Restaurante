@@ -28,7 +28,7 @@ export class PedidoEntity {
   total: number;
 
   @CreateDateColumn({ name: 'hora_pedido' })
-  horaPedido: TimeRanges;
+  horaPedido: number;
 
   @CreateDateColumn({ name: 'fecha_pedido' })
   fechaPedido: Date;
