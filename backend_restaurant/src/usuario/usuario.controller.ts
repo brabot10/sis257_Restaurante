@@ -11,7 +11,10 @@ import {
 import { UsuarioService } from './usuario.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiTags,
+} from '@nestjs/swagger';
 import { UsuarioEntity } from './entities/usuario.entity';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 

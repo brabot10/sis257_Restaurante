@@ -1,36 +1,27 @@
-import { PedidoEntity } from 'src/pedido/entities/pedido.entity';
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { PedidoEntity } from "src/pedido/entities/pedido.entity";
+import { Valoracion } from "src/valoraciones/entities/valoracion.entity";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+
 
 @Entity('platillos')
 export class PlatilloEntity {
+
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ type: 'varchar', length: 100, nullable: false })
   nombre: string;
-
-  @Column({ type: 'varchar', length: 150, nullable: false })
-  urlPlatillo: string;
-
+  
   @Column({ type: 'int', nullable: false })
-  precio: number;
-
-  @Column({ type: 'int', nullable: false })
-  tiempoPreparacion: number;
-
-  @Column({ type: 'int', nullable: false })
-  disponibilidad: number;
+  precio:number;
 
   @Column({ name: 'id_pedido' })
   idPedido: number;
 
-  @ManyToOne(() => PedidoEntity, pedidos => pedidos.platillos)
+  @OneToMany(() => Valoracion, (valoraciones) => valoraciones.platillos)
+  valoraciones: Valoracion[];
+
+  @ManyToOne(() => PedidoEntity, (pedidos) => pedidos.platillos)
   @JoinColumn({ name: 'id_pedido', referencedColumnName: 'id' })
   pedidos: PedidoEntity;
 }

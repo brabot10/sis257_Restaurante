@@ -19,7 +19,7 @@ export class PagoService {
   async create(createPagoDto: CreatePagoDto): Promise<Pago> {
     const existePago = await this.pagoRepository.findOneBy({
       mes: createPagoDto.mes.trim(),
-      diasExtra: createPagoDto.diasExtra.trim(),
+      tiempoExtra: createPagoDto.tiempoExtra.trim(),
       total: createPagoDto.total,
       idRepartidor: createPagoDto.idRepartidor,
     });
@@ -29,9 +29,7 @@ export class PagoService {
     }
     return this.pagoRepository.save({
       mes: createPagoDto.mes.trim(),
-      pagoDia: createPagoDto.pagoDia,
-      diasExtra: createPagoDto.diasExtra.trim(),
-      descuento: createPagoDto.descuento,
+      tiempoExtra: createPagoDto.tiempoExtra.trim(),
       total: createPagoDto.total,
       idRepartidor: createPagoDto.idRepartidor,
     });
@@ -53,7 +51,10 @@ export class PagoService {
     return pago;
   }
 
-  async update(id: number, updatePagoDto: UpdatePagoDto): Promise<Pago> {
+  async update(
+    id: number,
+    updatePagoDto: UpdatePagoDto,
+  ): Promise<Pago> {
     const pago = await this.pagoRepository.findOneBy({ id });
     if (!pago) {
       throw new NotFoundException(`El pago no existe ${id}`);

@@ -20,20 +20,20 @@ export class RepartidorService {
     createRepartidorDto: CreateRepartidorDto,
   ): Promise<RepartidorEntity> {
     const existe = await this.repartidorRepository.findOneBy({
-      nombreRepartidor: createRepartidorDto.nombreRepartidor.trim(),
-      carnetIdentidad: createRepartidorDto.carnetIdentidad,
+      nombreR: createRepartidorDto.nombreR.trim(),
+      carnet: createRepartidorDto.carnet,
       edad: createRepartidorDto.edad,
     });
 
     if (existe) {
       throw new ConflictException(
-        `El repartidor ${createRepartidorDto.nombreRepartidor} ya existe.`,
+        `El repartidor ${createRepartidorDto.nombreR} ya existe.`,
       );
     }
 
     return this.repartidorRepository.save({
-      nombreR: createRepartidorDto.nombreRepartidor.trim(),
-      carnet: createRepartidorDto.carnetIdentidad,
+      nombreR: createRepartidorDto.nombreR.trim(),
+      carnet: createRepartidorDto.carnet,
       edad: createRepartidorDto.edad,
     });
   }

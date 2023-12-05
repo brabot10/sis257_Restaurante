@@ -59,8 +59,7 @@ onMounted(() => {
 </script>
 
 <template>
-
-  <br><br><br>
+  <br /><br /><br />
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -68,7 +67,9 @@ onMounted(() => {
         <li class="breadcrumb-item">
           <RouterLink to="/valoraciones">Valoraciones</RouterLink>
         </li>
-        <li class="breadcrumb-item active" aria-current="page" style="color: black">Editar Valoración</li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: black">
+          Editar Valoración
+        </li>
       </ol>
     </nav>
 

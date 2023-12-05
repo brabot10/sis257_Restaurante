@@ -8,9 +8,10 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { PedidoModule } from './pedido/pedido.module';
 import { PlatillosModule } from './platillos/platillos.module';
 import { RepartidorModule } from './repartidor/repartidor.module';
+import { ValoracionesModule } from './valoraciones/valoraciones.module';
 import { PagoModule } from './pago/pago.module';
 import { DetallesModule } from './detalles/detalles.module';
-import { ClientesModule } from './clientes/clientes.module';
+
 
 @Module({
   imports: [
@@ -24,7 +25,7 @@ import { ClientesModule } from './clientes/clientes.module';
       database: process.env.DB_NAME,
       entities: [__filename+ '**/*.entity.ts'],
       synchronize: true,
-      autoLoadEntities: true,
+      autoLoadEntities: true
     }),
 
     AuthModule,
@@ -33,8 +34,8 @@ import { ClientesModule } from './clientes/clientes.module';
     DetallesModule,
     PagoModule,
     PlatillosModule,
+    ValoracionesModule,
     UsuarioModule,
-    ClientesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -18,6 +18,7 @@ export class PedidoService {
   async create(createPedidoDto: CreatePedidoDto): Promise<PedidoEntity> {
     const existe = await this.pedidoRepository.findOneBy({
       idRepartidor: createPedidoDto.idRepartidor,
+      nombreProducto: createPedidoDto.nombreProducto.trim(),
     });
 
     if (existe) {
@@ -25,27 +26,24 @@ export class PedidoService {
     }
 
     return this.pedidoRepository.save({
+      nombreProducto: createPedidoDto.nombreProducto.trim(),
       direccion: createPedidoDto.direccion.trim(),
+      nombreC: createPedidoDto.nombreC.trim(),
       cantidad: createPedidoDto.cantidad,
-      total: createPedidoDto.total,
-      horapedido: createPedidoDto.horaPedido,
-      fechaPedido: createPedidoDto.fechaPedido,
       idRepartidor: createPedidoDto.idRepartidor,
-      idCliente: createPedidoDto.idCliente,
-      idPlatillo: createPedidoDto.idPlatillo,
     });
   }
 
   async findAll(): Promise<PedidoEntity[]> {
-    return this.pedidoRepository.find({
+    return this.pedidoRepository.find({ 
       relations: { repartidor: true },
     });
   }
 
   async findOne(id: number): Promise<PedidoEntity> {
-    const pedido = await this.pedidoRepository.findOne({
+    const pedido = await this.pedidoRepository.findOne({ 
       where: { id },
-      relations: { repartidor: true },
+      relations:{ repartidor: true },
     });
 
     if (!pedido) {
@@ -54,10 +52,7 @@ export class PedidoService {
     return pedido;
   }
 
-  async update(
-    id: number,
-    updatePedidoDto: UpdatePedidoDto,
-  ): Promise<PedidoEntity> {
+  async update(id: number, updatePedidoDto: UpdatePedidoDto): Promise<PedidoEntity> {
     const pedido = await this.pedidoRepository.findOneBy({ id });
     if (!pedido) {
       throw new NotFoundException(`El pedido ${id} no existe.`);

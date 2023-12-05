@@ -7,6 +7,6 @@ import { PlatilloEntity } from './entities/platillo.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([PlatilloEntity])],
   controllers: [PlatillosController],
-  providers: [PlatillosService],
+  providers: [PlatillosService]
 })
 export class PlatillosModule {}
