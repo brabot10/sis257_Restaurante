@@ -3,8 +3,6 @@ import { PedidoEntity } from 'src/pedido/entities/pedido.entity';
 import {
   Column,
   Entity,
-  JoinColumn,
-  ManyToOne,
   OneToMany,
   PrimaryColumn,
 } from 'typeorm';
@@ -17,21 +15,20 @@ export class Cliente {
   @Column({ type: 'varchar', length: 100, nullable: false })
   nombreCliente: string;
 
-  @Column({ type: 'int', nullable: false })
-  carnetIdentidad: number;
+  @Column({ type: 'varchar', length: 100, nullable: false })
+  carnetIdentidad: string;
 
-  @Column({ name: 'Edad' })
-  edad: Date;
+  @Column({ name: 'fecha_Edad' })
+  fechaEdad: Date;
 
   @Column({ type: 'int', nullable: false })
-  numero: number;
+  celular: number;
 
   @Column({ name: 'fecha_registro' })
   fechaRegistro: Date;
 
-  @ManyToOne(() => PedidoEntity, pedido => pedido.clientes)
-  @JoinColumn({ name: 'id_Pedido', referencedColumnName: 'id' })
-  pedido: PedidoEntity;
+  @OneToMany(() => PedidoEntity, pedidos => pedidos.clientes)
+  pedidos: PedidoEntity;
 
   @OneToMany(() => Detalle, detalles => detalles.clientes)
   detalles: Detalle;

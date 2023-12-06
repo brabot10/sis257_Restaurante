@@ -1,6 +1,6 @@
 import { Pago } from 'src/pago/entities/pago.entity';
 import { PedidoEntity } from 'src/pedido/entities/pedido.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('repartidor')
 export class RepartidorEntity {
@@ -10,11 +10,17 @@ export class RepartidorEntity {
   @Column({ type: 'varchar', length: 100, nullable: false })
   nombreRepartidor: string;
 
-  @Column({ type: 'int', nullable: false })
-  carnetIdentidad: number;
+  @Column({ type: 'varchar', length: 100, nullable: false })
+  carnetIdentidad: string;
 
-  @Column({ type: 'int', nullable: false })
-  edad: number;
+  @Column({ name: 'fecha_Edad' })
+  fechaEdad: Date;
+
+  @Column({ name: 'fecha_Ingreso' })
+  fechaIngreso: Date;
+
+  @CreateDateColumn({ name: 'fecha_creacion' })
+  fechaCreacion: Date;
 
   @OneToMany(() => PedidoEntity, pedidos => pedidos.repartidor)
   pedidos: PedidoEntity[];

@@ -18,35 +18,28 @@ export class CreateClienteDto {
   readonly nombreCliente: string;
 
   @ApiProperty()
-  @IsDefined({ message: 'El campo carnet Identidad debe estar definido' })
-  @IsNumber(
-    {},
-    { message: 'El campo carnet Identidad debe ser de tipo numérico' },
-  )
-  readonly carnetIdentidad: number;
+  @IsNotEmpty({ message: 'El campo carnet de Identidad no debe ser vacío' })
+  @IsString({
+    message: 'El campo ncarnet de Identidad  debe ser de tipo cadena',
+  })
+  @MaxLength(100, {
+    message:
+      'El campo carnet de Identidad  no debe ser mayor a 100 caracteres',
+  })
+  readonly carnetIdentidad: string;
 
   @ApiProperty()
   @IsNotEmpty({ message: 'El campo Edad debe estar definido' })
   @IsDateString({}, { message: 'El campo Edad debe ser de tipo fecha' })
-  readonly edad: Date;
+  readonly fechaEdad: Date;
 
   @ApiProperty()
   @IsDefined({ message: 'El campo número debe estar definido' })
   @IsNumber({}, { message: 'El campo número debe ser de tipo numérico' })
-  readonly numero: number;
+  readonly celular: number;
 
   @ApiProperty()
   @IsNotEmpty({ message: 'El campo Edad debe estar definido' })
   @IsDateString({}, { message: 'El campo Edad debe ser de tipo fecha' })
   readonly fechaRegistro: Date;
-
-  @ApiProperty()
-  @IsDefined({ message: 'El campo pedido debe estar definido' })
-  @IsDateString({}, { message: 'El campo pedido debe ser de tipo numérico' })
-  readonly idPedido: number;
-
-  @ApiProperty()
-  @IsDefined({ message: 'El campo detalle debe estar definido' })
-  @IsDateString({}, { message: 'El campo detalle debe ser de tipo numérico' })
-  readonly idDetalles: number;
 }

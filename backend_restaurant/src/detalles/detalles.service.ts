@@ -18,7 +18,11 @@ export class DetallesService {
   async create(createDetalleDto: CreateDetalleDto): Promise<Detalle> {
     const existe = await this.detalleRepository.findOneBy({
       direccionEstado: createDetalleDto.direccionEstado.trim(),
+      puntuacion: createDetalleDto.puntuacion.trim(),
+      credibilidad: createDetalleDto.credibilidad.trim(),
+      amabilidad: createDetalleDto.amabilidad.trim(),
       idPedido: createDetalleDto.idPedido,
+      idCliente: createDetalleDto.idCliente,
     });
 
     if (existe) {
@@ -33,19 +37,20 @@ export class DetallesService {
       credibilidad: createDetalleDto.credibilidad.trim(),
       amabilidad: createDetalleDto.amabilidad.trim(),
       idPedido: createDetalleDto.idPedido,
+      idCliente: createDetalleDto.idCliente,
     });
   }
 
   async findAll(): Promise<Detalle[]> {
     return this.detalleRepository.find({
-      relations: { pedidos: true }, //referencia al entity
+      relations: { pedidos: true, clientes:true }, //referencia al entity
     });
   }
 
   async findOne(id: number): Promise<Detalle> {
     const detalle = await this.detalleRepository.findOne({
       where: { id },
-      relations: { pedidos: true },
+      relations: { pedidos: true, clientes:true },
     });
 
     if (!detalle) {

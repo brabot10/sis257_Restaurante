@@ -1,6 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
-  IsDefined,
   IsNotEmpty,
   IsNumber,
   IsString,
@@ -23,9 +22,9 @@ export class CreatePlatilloDto {
   @IsString({
     message: 'El campo urlPlatillo del producto debe ser de tipo cadena',
   })
-  @MaxLength(200, {
+  @MaxLength(250, {
     message:
-      'El campo urlPlatillo del producto no debe ser mayor a 100 caracteres',
+      'El campo urlPlatillo del producto no debe ser mayor a 250 caracteres',
   })
   readonly urlPlatillo: string;
 
@@ -46,9 +45,4 @@ export class CreatePlatilloDto {
   @IsNotEmpty({ message: 'El campo disponibilidad  no de ser vacío' })
   @IsNumber({}, { message: 'El campo disponibilidad debe ser de tipo número' })
   readonly disponibilidad: number;
-
-  @ApiProperty()
-  @IsDefined({ message: 'El campo Pedido debe estar definido' })
-  @IsNumber({}, { message: 'El campo Pedido debe ser de tipo numérico' })
-  readonly idPedido: number;
 }

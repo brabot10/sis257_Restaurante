@@ -21,8 +21,9 @@ export class RepartidorService {
   ): Promise<RepartidorEntity> {
     const existe = await this.repartidorRepository.findOneBy({
       nombreRepartidor: createRepartidorDto.nombreRepartidor.trim(),
-      carnetIdentidad: createRepartidorDto.carnetIdentidad,
-      edad: createRepartidorDto.edad,
+      carnetIdentidad: createRepartidorDto.carnetIdentidad.trim(),
+      fechaEdad: createRepartidorDto.fechaEdad,
+      fechaIngreso: createRepartidorDto.fechaIngreso,
     });
 
     if (existe) {
@@ -33,8 +34,9 @@ export class RepartidorService {
 
     return this.repartidorRepository.save({
       nombreRepartidor: createRepartidorDto.nombreRepartidor.trim(),
-      carnetIdentidad: createRepartidorDto.carnetIdentidad,
-      edad: createRepartidorDto.edad,
+      carnetIdentidad: createRepartidorDto.carnetIdentidad.trim(),
+      fechaEdad: createRepartidorDto.fechaEdad,
+      fechaIngreso: createRepartidorDto.fechaIngreso,
     });
   }
   async findAll(): Promise<RepartidorEntity[]> {

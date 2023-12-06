@@ -8,21 +8,21 @@ import {
 } from 'class-validator';
 
 export class CreatePagoDto {
-  @ApiProperty()
-  @IsNotEmpty({ message: 'El campo mes no debe ser vacío' })
-  @IsString({ message: 'El campo mes debe ser de tipo cadena' })
-  @MaxLength(50, {
-    message: 'El campo mes  no debe ser mayor a 50 caracteres',
-  })
-  readonly mes: string;
 
   @ApiProperty()
-  @IsNotEmpty({ message: 'El campo tiempo Extra no debe ser vacío' })
-  @IsString({ message: 'El campo tiempo Extra debe ser de tipo cadena' })
-  @MaxLength(250, {
-    message: 'El campo tiempoExtra  no debe ser mayor a 250 caracteres',
-  })
-  readonly tiempoExtra: string;
+  @IsNotEmpty({ message: 'El campo sueldo no de ser vacío' })
+  @IsNumber({}, { message: 'El campo sueldo debe ser de tipo número' })
+  readonly sueldo: number;
+
+  @ApiProperty()
+  @IsNotEmpty({ message: 'El campo dia no de ser vacío' })
+  @IsNumber({}, { message: 'El campo dia debe ser de tipo número' })
+  readonly dia: number;
+
+  @ApiProperty()
+  @IsNotEmpty({ message: 'El campo dia Extra no de ser vacío' })
+  @IsNumber({}, { message: 'El campo dia Extra debe ser de tipo número' })
+  readonly diaExtra: number;
 
   @ApiProperty()
   @IsNotEmpty({ message: 'El campo descuento no de ser vacío' })
@@ -33,6 +33,15 @@ export class CreatePagoDto {
   @IsNotEmpty({ message: 'El campo total no de ser vacío' })
   @IsNumber({}, { message: 'El campo total debe ser de tipo número' })
   readonly total: number;
+
+  @ApiProperty()
+  @IsNotEmpty({ message: 'El campo fecha Cancelado no debe ser vacío' })
+  @IsString({ message: 'El campo fecha Cancelado debe ser de tipo cadena' })
+  @MaxLength(50, {
+    message: 'El campo fecha Cancelado  no debe ser mayor a 250 caracteres',
+  })
+  readonly fechaCancelado: string;
+
 
   @ApiProperty()
   @IsDefined({ message: 'El campo Repartidor debe estar definido' })

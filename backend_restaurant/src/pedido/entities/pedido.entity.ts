@@ -17,17 +17,11 @@ export class PedidoEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 100, nullable: false })
-  nombreCliente: string;
-
-  @Column({ type: 'varchar', length: 100, nullable: false })
-  direccion: string;
-
-  @Column({ type: 'varchar', length: 100, nullable: false })
-  nombreProducto: string;
-
   @Column({ type: 'int', nullable: false })
   cantidad: number;
+
+  @Column({ type: 'int', nullable: false })
+  total: number;
 
   @CreateDateColumn({ name: 'fecha_pedido' })
   fechaPedido: Date;
@@ -35,22 +29,27 @@ export class PedidoEntity {
   @Column({ name: 'id_repartidor' })
   idRepartidor: number;
 
-  @Column({ name: 'id_repartidor' })
+  @Column({ name: 'id_cliente' })
+  idCliente: number;
+
+  @Column({ name: 'id_platillo' })
   idPlatillo: number;
 
-  @Column({ name: 'id_repartidor' })
-  idCliente: number;
 
   @ManyToOne(() => RepartidorEntity, repartidor => repartidor.pedidos)
   @JoinColumn({ name: 'id_repartidor', referencedColumnName: 'id' })
   repartidor: RepartidorEntity;
 
-  @OneToMany(() => PlatilloEntity, platillos => platillos.pedidos)
-  platillos: PlatilloEntity[];
+  @ManyToOne(() => Cliente, clientes => clientes.pedidos)
+  @JoinColumn({ name: 'id_cliente', referencedColumnName: 'id' })
+  clientes: Cliente;
+  
+  @ManyToOne(() => PlatilloEntity, platillos => platillos.pedidos)
+  @JoinColumn({ name: 'id_platillo', referencedColumnName: 'id' })
+  platillos: PlatilloEntity;
 
   @OneToMany(() => Detalle, detalles => detalles.pedidos)
   detalles: Detalle;
 
-  @ManyToOne(() => Cliente, cliente => cliente.pedido)
-  clientes: Cliente;
+
 }

@@ -18,10 +18,12 @@ export class PagoService {
 
   async create(createPagoDto: CreatePagoDto): Promise<Pago> {
     const existePago = await this.pagoRepository.findOneBy({
-      mes: createPagoDto.mes.trim(),
-      tiempoExtra: createPagoDto.tiempoExtra.trim(),
+      sueldo: createPagoDto.sueldo,
+      dia: createPagoDto.dia,
+      diaExtra: createPagoDto.diaExtra,
       descuento: createPagoDto.descuento,
       total: createPagoDto.total,
+      fechaCancelado: createPagoDto.fechaCancelado.trim(),
       idRepartidor: createPagoDto.idRepartidor,
     });
 
@@ -29,10 +31,12 @@ export class PagoService {
       throw new ConflictException('El pago ya existe');
     }
     return this.pagoRepository.save({
-      mes: createPagoDto.mes.trim(),
-      tiempoExtra: createPagoDto.tiempoExtra.trim(),
+      sueldo: createPagoDto.sueldo,
+      dia: createPagoDto.dia,
+      diaExtra: createPagoDto.diaExtra,
       descuento: createPagoDto.descuento,
       total: createPagoDto.total,
+      fechaCancelado: createPagoDto.fechaCancelado.trim(),
       idRepartidor: createPagoDto.idRepartidor,
     });
   }

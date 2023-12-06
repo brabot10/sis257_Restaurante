@@ -2,8 +2,7 @@ import { PedidoEntity } from 'src/pedido/entities/pedido.entity';
 import {
   Column,
   Entity,
-  JoinColumn,
-  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -15,7 +14,7 @@ export class PlatilloEntity {
   @Column({ type: 'varchar', length: 100, nullable: false })
   nombre: string;
 
-  @Column({ type: 'varchar', length: 200, nullable: false })
+  @Column({ type: 'varchar', length: 250, nullable: false })
   urlPlatillo: string;
 
   @Column({ type: 'int', nullable: false })
@@ -27,10 +26,6 @@ export class PlatilloEntity {
   @Column({ type: 'int', nullable: false })
   disponibilidad: number;
 
-  @Column({ name: 'id_pedido' })
-  idPedido: number;
-
-  @ManyToOne(() => PedidoEntity, pedidos => pedidos.platillos)
-  @JoinColumn({ name: 'id_pedido', referencedColumnName: 'id' })
-  pedidos: PedidoEntity;
+  @OneToMany(() => PedidoEntity, pedidos => pedidos.platillos)
+  pedidos: PedidoEntity[];
 }

@@ -19,8 +19,11 @@ export class ClientesService {
   ) {}
   async create(createClienteDto: CreateClienteDto) {
     const existeCliente = await this.clienteRepository.findOneBy({
-      nombreCliente: createClienteDto.nombreCliente,
-      pedido: { id: createClienteDto.idPedido },
+      nombreCliente: createClienteDto.nombreCliente.trim(),
+      carnetIdentidad: createClienteDto.carnetIdentidad,
+      fechaEdad: createClienteDto.fechaEdad,
+      celular: createClienteDto.celular,
+
     });
 
     if (existeCliente) {
@@ -32,23 +35,20 @@ export class ClientesService {
     return this.clienteRepository.save({
       nombreCliente: createClienteDto.nombreCliente.trim(),
       carnetIdentidad: createClienteDto.carnetIdentidad,
-      edad: createClienteDto.edad,
-      numero: createClienteDto.numero,
-      idPedido: { id: createClienteDto.idPedido },
-      idDetalles: { id: createClienteDto.idDetalles },
+      fechaEdad: createClienteDto.fechaEdad,
+      celular: createClienteDto.celular,
+
     });
   }
 
   async findAll(): Promise<Cliente[]> {
     return this.clienteRepository.find({
-      relations: ['pedido', 'detalles'],
     });
   }
 
   async findOne(id: number): Promise<Cliente> {
     const Clientes = await this.clienteRepository.findOne({
       where: { id },
-      relations: ['pedido', 'detalles'],
     });
     if (!Clientes) {
       throw new NotFoundException(`El Cliente no existe ${id}`);
@@ -65,8 +65,6 @@ export class ClientesService {
       throw new NotFoundException(`El Cliente no existe ${id}`);
     }
     const clienteUpdate = Object.assign(cliente, updateClienteDto);
-    clienteUpdate.pedido = { id: updateClienteDto.idPedido } as PedidoEntity;
-    clienteUpdate.detalles = { id: updateClienteDto.idDetalles } as Detalle;
     return this.clienteRepository.save(clienteUpdate);
   }
 

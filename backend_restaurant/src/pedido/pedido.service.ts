@@ -17,8 +17,12 @@ export class PedidoService {
   ) {}
   async create(createPedidoDto: CreatePedidoDto): Promise<PedidoEntity> {
     const existe = await this.pedidoRepository.findOneBy({
+      cantidad: createPedidoDto.cantidad,
+      total: createPedidoDto.total,
+      fechaPedido: createPedidoDto.fechaPedido,
       idRepartidor: createPedidoDto.idRepartidor,
-      nombreProducto: createPedidoDto.nombreProducto.trim(),
+      idCliente: createPedidoDto.idCliente,
+      idPlatillo: createPedidoDto.idPlatillo,
     });
 
     if (existe) {
@@ -26,24 +30,25 @@ export class PedidoService {
     }
 
     return this.pedidoRepository.save({
-      nombreProducto: createPedidoDto.nombreProducto.trim(),
-      direccion: createPedidoDto.direccion.trim(),
-      nombreCliente: createPedidoDto.nombreC.trim(),
       cantidad: createPedidoDto.cantidad,
+      total: createPedidoDto.total,
+      fechaPedido: createPedidoDto.fechaPedido,
       idRepartidor: createPedidoDto.idRepartidor,
+      idCliente: createPedidoDto.idCliente,
+      idPlatillo: createPedidoDto.idPlatillo,
     });
   }
 
   async findAll(): Promise<PedidoEntity[]> {
     return this.pedidoRepository.find({
-      relations: { repartidor: true },
+      relations: { repartidor: true, clientes:true, platillos: true },
     });
   }
 
   async findOne(id: number): Promise<PedidoEntity> {
     const pedido = await this.pedidoRepository.findOne({
       where: { id },
-      relations: { repartidor: true },
+      relations: { repartidor: true, clientes:true, platillos: true },
     });
 
     if (!pedido) {
