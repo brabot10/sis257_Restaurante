@@ -11,6 +11,7 @@ import { RepartidorModule } from './repartidor/repartidor.module';
 import { PagoModule } from './pago/pago.module';
 import { DetallesModule } from './detalles/detalles.module';
 import { ClientesModule } from './clientes/clientes.module';
+import { DireccionesModule } from './direcciones/direcciones.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { ClientesModule } from './clientes/clientes.module';
     PlatillosModule,
     UsuarioModule,
     ClientesModule,
+    DireccionesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -23,6 +23,7 @@ export class PedidoService {
       idRepartidor: createPedidoDto.idRepartidor,
       idCliente: createPedidoDto.idCliente,
       idPlatillo: createPedidoDto.idPlatillo,
+      idDireccion: createPedidoDto.idDireccion,
     });
 
     if (existe) {
@@ -36,19 +37,20 @@ export class PedidoService {
       idRepartidor: createPedidoDto.idRepartidor,
       idCliente: createPedidoDto.idCliente,
       idPlatillo: createPedidoDto.idPlatillo,
+      idDireccion: createPedidoDto.idDireccion,
     });
   }
 
   async findAll(): Promise<PedidoEntity[]> {
     return this.pedidoRepository.find({
-      relations: { repartidor: true, clientes:true, platillos: true },
+      relations: { repartidor: true, clientes:true, platillos: true, direcciones:true  },
     });
   }
 
   async findOne(id: number): Promise<PedidoEntity> {
     const pedido = await this.pedidoRepository.findOne({
       where: { id },
-      relations: { repartidor: true, clientes:true, platillos: true },
+      relations: { repartidor: true, clientes:true, platillos: true, direcciones:true },
     });
 
     if (!pedido) {

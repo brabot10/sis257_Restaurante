@@ -1,4 +1,5 @@
 import { Detalle } from 'src/detalles/entities/detalle.entity';
+import { Direccion } from 'src/direcciones/entities/direccion.entity';
 import { PedidoEntity } from 'src/pedido/entities/pedido.entity';
 import {
   Column,
@@ -32,4 +33,7 @@ export class Cliente {
 
   @OneToMany(() => Detalle, detalles => detalles.clientes)
   detalles: Detalle;
+
+  @OneToMany(() => Direccion, direcciones => direcciones.clientes)
+  direcciones: Detalle;
 }

@@ -8,8 +8,6 @@ import { UpdateClienteDto } from './dto/update-cliente.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Cliente } from './entities/cliente.entity';
 import { Repository } from 'typeorm';
-import { PedidoEntity } from 'src/pedido/entities/pedido.entity';
-import { Detalle } from 'src/detalles/entities/detalle.entity';
 
 @Injectable()
 export class ClientesService {

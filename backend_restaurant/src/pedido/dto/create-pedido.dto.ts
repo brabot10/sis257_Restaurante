@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDateString, IsDefined, IsNotEmpty, IsNumber, IsString, MaxLength } from "class-validator";
+import { IsDateString, IsDefined, IsNotEmpty, IsNumber} from "class-validator";
 
 export class CreatePedidoDto {
 
@@ -35,4 +35,9 @@ export class CreatePedidoDto {
     @IsDefined({ message: 'El campo Platillo debe estar definido' })
     @IsNumber({}, { message: 'El campo Platillo debe ser de tipo numérico' })
     readonly idPlatillo: number;
+
+    @ApiProperty()
+    @IsDefined({ message: 'El campo Direccion debe estar definido' })
+    @IsNumber({}, { message: 'El campo Direccion debe ser de tipo numérico' })
+    readonly idDireccion: number;
 }
