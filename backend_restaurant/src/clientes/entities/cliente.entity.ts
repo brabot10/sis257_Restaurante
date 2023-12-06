@@ -1,6 +1,15 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Detalle } from 'src/detalles/entities/detalle.entity';
+import { PedidoEntity } from 'src/pedido/entities/pedido.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryColumn,
+} from 'typeorm';
 
-@Entity('Clientes')
+@Entity('clientes')
 export class Cliente {
   @PrimaryColumn()
   id: number;
@@ -19,4 +28,11 @@ export class Cliente {
 
   @Column({ name: 'fecha_registro' })
   fechaRegistro: Date;
+
+  @ManyToOne(() => PedidoEntity, pedido => pedido.clientes)
+  @JoinColumn({ name: 'id_Pedido', referencedColumnName: 'id' })
+  pedido: PedidoEntity;
+
+  @OneToMany(() => Detalle, detalles => detalles.clientes)
+  detalles: Detalle;
 }
