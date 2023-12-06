@@ -18,7 +18,7 @@ export class PedidoEntity {
   id: number;
 
   @Column({ type: 'varchar', length: 100, nullable: false })
-  nombreC: string;
+  nombreCliente: string;
 
   @Column({ type: 'varchar', length: 100, nullable: false })
   direccion: string;

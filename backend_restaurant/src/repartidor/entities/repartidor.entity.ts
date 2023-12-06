@@ -8,10 +8,10 @@ export class RepartidorEntity {
   id: number;
 
   @Column({ type: 'varchar', length: 100, nullable: false })
-  nombreR: string;
+  nombreRepartidor: string;
 
   @Column({ type: 'int', nullable: false })
-  carnet: number;
+  carnetIdentidad: number;
 
   @Column({ type: 'int', nullable: false })
   edad: number;

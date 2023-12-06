@@ -19,6 +19,9 @@ export class Pago {
   tiempoExtra: string;
 
   @Column({ type: 'int', nullable: false })
+  descuento: number;
+
+  @Column({ type: 'int', nullable: false })
   total: number;
 
   @Column({ name: 'id_repartidor' })

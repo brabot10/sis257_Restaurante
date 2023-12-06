@@ -15,8 +15,17 @@ export class PlatilloEntity {
   @Column({ type: 'varchar', length: 100, nullable: false })
   nombre: string;
 
+  @Column({ type: 'varchar', length: 200, nullable: false })
+  urlPlatillo: string;
+
   @Column({ type: 'int', nullable: false })
   precio: number;
+
+  @Column({ type: 'int', nullable: false })
+  tiempoPraparacion: number;
+
+  @Column({ type: 'int', nullable: false })
+  disponibilidad: number;
 
   @Column({ name: 'id_pedido' })
   idPedido: number;
