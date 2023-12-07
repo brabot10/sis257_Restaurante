@@ -17,6 +17,7 @@ import MainFooter from "./components/MainFooter.vue";
   <MainFooter/>
 </template>
 
+
 <style>
 @import "@/assets/css/bootstrap.min.css";
 @import "@/assets/css/bootstrap-icons.css";

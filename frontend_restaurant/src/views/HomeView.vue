@@ -18,7 +18,7 @@
   <section class="about-section section-padding" id="section_2">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 col-12 mb-4 mb-lg-0 d-flex align-items-center">
+        <div class="col-lg-6 col-12 mb-2 mb-lg-0 d-flex align-items-center " style="text-align: justify">
           <div class="services-info">
             <h2 class="text-white mb-4">Historia</h2>
 
@@ -27,7 +27,7 @@
             </p>
 
             <p class="text-white">
-              Miguel tenía una visión clara para su restaurante: un lugar acogedor donde la gente pudiera disfrutar de exquisitas delicias culinarias en un ambiente relajado. Tras encontrar el lugar perfecto en el corazón de la ciudad, comenzó a trabajar arduamente para convertir su visión en realidad.La decoración del restaurante también fue fundamental. Miguel quería que Las Delicias no solo fuera un lugar para comer, sino un espacio donde los comensales se sintieran como en casa. Colores cálidos, obras de arte locales y una iluminación ambiental se unieron para crear una atmósfera acogedora y encantadora.
+              Miguel tenía una visión clara para su restaurante: un lugar acogedor donde la gente pudiera disfrutar de exquisitas delicias culinarias en un ambiente relajado. Tras encontrar el lugar perfecto en el corazón de la ciudad, comenzó a trabajar arduamente para convertir su visión en realidad.La decoración del restaurante también fue fundamental. Miguel quería que "QUE RICO!" no solo fuera un lugar para comer, sino un espacio donde los comensales se sintieran como en casa. Colores cálidos, obras de arte locales y una iluminación ambiental se unieron para crear una atmósfera acogedora y encantadora.
             </p>
           </div>
         </div>
@@ -35,9 +35,10 @@
         <div class="col-lg-6 col-12">
           <div class="about-text-wrap">
             <img
-              src="@/assets/images/pres.jpeg"
-              class="about-image img-fluid"
+              src="@/assets/images/querico.jpg"
+              alt="Image" class="img-fluid"
             />
+            <span class="date" style="color: white;">Dic. 12, 2023</span>
           </div>
         </div>
       </div>
@@ -76,17 +77,18 @@
     </div>
   </section>
 
-  <section class="contact-section section-padding" id="section_6">
+  <section class="contact-section section-padding" id="section_6" style="background-color: #704010;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-12 mx-auto">
           <h2 class="text-center mb-4">Ubicación</h2>
 
-          <nav class="d-flex justify-content-center">
+          <nav class="d-flex justify-content-center" >
             <div
               class="nav nav-tabs align-items-baseline justify-content-center"
               id="nav-tab"
               role="tablist"
+              
             >
 
               <button

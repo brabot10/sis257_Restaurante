@@ -6,34 +6,30 @@ const authStore = useAuthStore()
 </script>
 
 <template>
-  <header class="site-header">
-    <div class="container">
-      <div class="row">
+  <header class="site-header" style="background-color: black;">
+
+      <div class="mx-5">
         <div class="col-lg-12 col-12 d-flex flex-wrap">
           <p class="d-flex me-4 mb-0">
-            <i class="bi-person custom-icon me-2"></i>
-            <strong class="text-dark">Bienvenido a SIS257 Defensa Laboratorio</strong>
+            <i class="bi-person custom-icon me-2" style="color: #E49E48"></i>
+            <strong  style="color: #E49E48"
+              >Bienvenido al área de administración de los repartidores del restaurante QUE RICO!</strong
+            >
           </p>
         </div>
       </div>
-    </div>
-  </header>
 
-  <!-- <nav class="navbar navbar-expand-lg"
-    :style="location.path != '/' ? 'background-color: black !important' : ''"
-  > -->
+  </header>
   <nav
     class="navbar navbar-expand-lg"
     :style="'background-color:' + (location.path != '/' ? 'black ' : '')"
   >
-    <div class="container">
-      <a class="navbar-brand" href="index.html"> QUE RICO! </a>
-      <!-- <RouterLink to="/" class="navbar-brand"> QUE RICO!</RouterLink> -->
+
+    <div class="mx-5">
 
       <RouterLink v-if="!authStore.token" to="/login" class="btn custom-btn d-lg-none ms-auto me-4">
         Iniciar Sesión
       </RouterLink>
-
       <a v-else @click="authStore.logout()" class="btn custom-btn d-lg-none ms-auto me-4">Salir</a>
 
       <button
@@ -48,7 +44,7 @@ const authStore = useAuthStore()
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
+        <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5" style="text-align: justify">
           <li class="nav-item">
             <RouterLink to="/" class="nav-link click-scroll">Inicio</RouterLink>
           </li>
@@ -91,8 +87,16 @@ const authStore = useAuthStore()
           Iniciar Sesión
         </RouterLink>
 
-        <a v-else @click="authStore.logout()" class="btn custom-btn d-lg-block d-none" style="color: white">Salir</a>
+        <a
+          v-else
+          @click="authStore.logout()"
+          class="btn custom-btn d-lg-block d-none"
+          style="color: white"
+          >Salir</a
+        >
       </div>
     </div>
   </nav>
 </template>
+
+<style scoped></style>
