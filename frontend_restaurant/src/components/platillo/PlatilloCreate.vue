@@ -42,6 +42,7 @@ function goBack() {
 </script>
 
 <template>
+  <br /><br /><br />
   <div class="container">
     <div class="find-us">
       <div class="row">
@@ -53,13 +54,12 @@ function goBack() {
                   <RouterLink to="/">Inicio</RouterLink>
                 </li>
                 <li class="breadcrumb-item">
-                  <RouterLink to="/productos">Productos</RouterLink>
+                  <RouterLink to="/platillos">Platillos</RouterLink>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Crear</li>
               </ol>
             </nav>
-            <h2>INSERTAR DATOS DEL PRODUCTO</h2>
-            <button class="btn btn-success" @click="goBack">Volver</button>
+            <h2>INSERTAR DATOS DEL PLATILLO</h2>
           </div>
         </div>
       </div>
@@ -115,7 +115,7 @@ function goBack() {
       </form>
     </div>
     <div class="text-left">
-      <button class="btn btn-link" @click="goBack">Volver</button>
+      <button class="btn btn-success" @click="goBack">Volver</button>
     </div>
   </div>
 </template>

@@ -3,6 +3,8 @@ import type { Pedido } from '@/models/pedido'
 import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
+import { useAuthStore } from '@/stores/index'
+const authStore = useAuthStore()
 
 const props = defineProps<{
   ENDPOINT_API: string
@@ -32,68 +34,73 @@ onMounted(() => {
 </script>
 
 <template>
-  <br><br><br>
-  <div class="container">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <RouterLink to="/">Inicio</RouterLink>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page" style="color: black;">
-          Pedido
-        </li>
-      </ol>
-    </nav>
-
-    <div class="row">
-      <h2 >Lista de Pedidos</h2>
-      <div class="col-12">
-        <RouterLink to="/pedido/crear">
-          <font-awesome-icon icon="fa-solid fa-plus" />Crear Nuevo Pedido
-        </RouterLink>
+  <br /><br /><br />
+  <div v-if="authStore.token">
+    <div class="find-us">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <RouterLink to="/">Inicio</RouterLink>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Pedidos</li>
+                </ol>
+              </nav>
+              <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+                Lista de Pedidos
+              </h2>
+              <div class="col-12"></div>
+            </div>
+            <RouterLink to="/platillos/crear">Crear Nuevo Pedido </RouterLink>
+          </div>
+        </div>
       </div>
     </div>
+    <br />
+    <div class="container">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr style="background-color: black">
+              <th scope="col" style="color: #e49e48">N°</th>
+              <th scope="col" style="color: #e49e48">Orden del Pedido</th>
+              <th scope="col" style="color: #e49e48">Nombre del Repartidor</th>
+              <th scope="col" style="color: #e49e48">Nombre Cliente</th>
+              <th scope="col" style="color: #e49e48">Nombre de la Dirección</th>
+              <th scope="col" style="color: #e49e48">Platillo</th>
+              <th scope="col" style="color: #e49e48">Cantidad</th>
+              <th scope="col" style="color: #e49e48">Total</th>
+              <th scope="col" style="color: #e49e48">Fecha del Pedido</th>
+              <th scope="col" style="color: #e49e48">Editar/Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(pedido, index) in pedidos" :key="pedido.id" style="background-color: black">
+              <th scope="row" style="color: #f8cb2e">{{ index + 1 }}</th>
+              <td align="center" style="color: #f8cb2e">{{ pedido.id }}</td>
+              <td style="color: #f8cb2e">{{ pedido.repartidor.nombreRepartidor }}</td>
+              <td style="color: #f8cb2e">{{ pedido.cliente.nombreCliente }}</td>
+              <td style="color: #f8cb2e">{{ pedido.direccion.direccion }}</td>
+              <td style="color: #f8cb2e">{{ pedido.platillo.nombre }}</td>
+              <td style="color: #f8cb2e">{{ pedido.cantidad }}</td>
+              <td style="color: #f8cb2e">{{ pedido.total }}</td>
+              <td style="color: #f8cb2e">{{ dayjs(pedido.fechaPedido).format('DD/MM/YYYY') }}</td>
 
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
-          <tr style="background-color: black;">
-            <th scope="col" style="color: #E49E48;">N°</th>
-            <th scope="col" style="color: #E49E48;">Orden del Pedido</th>
-            <th scope="col" style="color: #E49E48;">Nombre del Repartidor</th>
-            <th scope="col" style="color: #E49E48;">Nombre Cliente</th>
-            <th scope="col" style="color: #E49E48;">Direccion</th>
-            <th scope="col" style="color: #E49E48;">Nombre del Producto</th>
-            <th scope="col" style="color: #E49E48;">Cantidad</th>
-            <!-- <th scope="col" style="color: #E49E48;">
-              <time datetime="08/10/2023">Fecha del Pedido</time> 
-            </th> -->
-            <th scope="col" style="color: #E49E48;">Fecha del Pedido</th> 
-            <th scope="col" style="color: #E49E48;">Editar/Eliminar</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(pedido, index, ) in pedidos" :key="pedido.id" style="background-color: black;">
-            <th scope="row" style="color: #F8CB2E;">{{ index + 1 }}</th>
-            <td align="center" style="color: #F8CB2E;">{{ pedido.id }}</td>
-            <td style="color: #F8CB2E;">{{ pedido.repartidor.nombreR }}</td>
-            <td style="color: #F8CB2E;">{{ pedido.nombreC }}</td>
-            <td style="color: #F8CB2E;">{{ pedido.direccion }}</td>
-            <td style="color: #F8CB2E;">{{ pedido.nombreProducto}}</td>
-            <td style="color: #F8CB2E;">{{ pedido.cantidad}}</td>
-            <td style="color: #F8CB2E;">{{ pedido.fechaPedido}}</td>
-            
-            <td>
-              <button class="btn text-success" @click="toEdit(pedido.id)">
-                <font-awesome-icon icon="fa-solid fa-edit" />
-              </button>
-              <button class="btn text-danger" @click="toDelete(pedido.id)">
-                <font-awesome-icon icon="fa-solid fa-trash" />
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              <td>
+                <button class="btn text-success" @click="toEdit(pedido.id)">
+                  <font-awesome-icon icon="fa-solid fa-edit" />
+                </button>
+                <button class="btn text-danger" @click="toDelete(pedido.id)">
+                  <font-awesome-icon icon="fa-solid fa-trash" />
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>

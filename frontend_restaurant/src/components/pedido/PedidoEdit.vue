@@ -3,6 +3,37 @@ import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
 import type { Repartidor } from '@/models/repartidor'
+import type { Cliente } from '@/models/cliente'
+import type { Direccion } from '@/models/direccion'
+import type { Platillo } from '@/models/platillo'
+
+var direcciones = ref<Direccion[]>([])
+async function getDireccion() {
+  direcciones.value = await http.get('direccion').then((response) => response.data)
+}
+
+onMounted(() => {
+  getDireccion()
+})
+
+
+var platillos = ref<Platillo[]>([])
+async function getPlatillo() {
+  platillos.value = await http.get('platillo').then((response) => response.data)
+}
+
+onMounted(() => {
+  getPlatillo()
+})
+
+var clientes = ref<Cliente[]>([])
+async function getCliente() {
+  clientes.value = await http.get('cliente').then((response) => response.data)
+}
+
+onMounted(() => {
+  getCliente()
+})
 
 var repartidores = ref<Repartidor[]>([])
 async function getRepartidor() {
@@ -17,35 +48,38 @@ const props = defineProps<{
 }>()
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
-const nombreC = ref('')
-const direccion = ref('')
-const nombreProducto = ref('')
 const cantidad = ref('')
+const total = ref('')
 const fechaPedido = ref('')
 const idRepartidor = ref('')
+const idCliente = ref('')
+const idPlatillo = ref('')
+const idDireccion = ref('')
 const id = router.currentRoute.value.params['id']
 
 async function editarPedido() {
   await http
     .patch(`${ENDPOINT}/${id}`, {
-      nombreC: nombreC.value,
-      direccion: direccion.value,
-      nombreProducto: nombreProducto.value,
       cantidad: cantidad.value,
+      total: total.value,
       fechaPedido: fechaPedido.value,
-      idRepartidor: idRepartidor.value
+      idRepartidor: idRepartidor.value,
+      idCliente: idCliente.value,
+      idPlatillo: idPlatillo.value,
+      idDireccion: idDireccion.value
     })
     .then(() => router.push('/pedido'))
 }
 
 async function getPedido() {
   await http.get(`${ENDPOINT}/${id}`).then((response) => {
-    ;(nombreC.value = response.data.nombreC),
-      (direccion.value = response.data.direccion),
-      (nombreProducto.value = response.data.nombreProducto),
-      (cantidad.value = response.data.cantidad),
+    ;(cantidad.value = response.data.cantidad),
+    (total.value = response.data.total),
       (fechaPedido.value = response.data.fechaPedido),
-      (idRepartidor.value = response.data.idRepartidor)
+      (idRepartidor.value = response.data.idRepartidor),
+      (idCliente.value = response.data.idCliente),
+      (idPlatillo.value = response.data.idPlatillo),
+      (idDireccion.value = response.data.idDireccion)
   })
 }
 
@@ -73,41 +107,54 @@ onMounted(() => {
       </ol>
     </nav>
 
-    <div class="row">
-      <h2>Editar Pedido</h2>
+    <div class="find-us">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>EDITAR DATOS DEL PEDIDO</h2>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="row">
       <form @submit.prevent="editarPedido">
-        <div class="form-floating">
-          <input
-            type="text"
-            class="form-control"
-            v-model="nombreC"
-            placeholder="NombreC"
-            required
-          />
-          <label for="nombreC">Nombre Cliente</label>
-        </div>
         <div class="form-floating mb-3">
-          <input
-            type="text"
-            class="form-control"
-            v-model="direccion"
-            placeholder="Direccion"
-            required
-          />
-          <label for="direccion">Direccion</label>
+          <select v-model="idRepartidor" class="form-select">
+            <option v-for="repartidor in repartidores" :value="repartidor.id">
+              {{ repartidor.nombreRepartidor }}
+            </option>
+          </select>
+          <label for="repartidor">Nombre del Repartidor</label>
         </div>
-        <div class="form-floating">
-          <input
-            type="text"
-            class="form-control"
-            v-model="nombreProducto"
-            placeholder="Nombre del pedido"
-            required
-          />
-          <label for="nombreProducto">Nombre del Pedido</label>
+
+        <div class="form-floating mb-3">
+          <select v-model="idCliente" class="form-select">
+            <option v-for="cliente in clientes" :value="cliente.id">
+              {{ cliente.nombreCliente }}
+            </option>
+          </select>
+          <label for="cliente">Nombre del Cliente</label>
+        </div>
+
+        
+        <div class="form-floating mb-3">
+          <select v-model="idDireccion" class="form-select">
+            <option v-for="direccion in direcciones" :value="direccion.id">
+              {{ direccion.direccion }}
+            </option>
+          </select>
+          <label for="cliente">Dirección</label>
+        </div>
+
+        
+        <div class="form-floating mb-3">
+          <select v-model="idPlatillo" class="form-select">
+            <option v-for="platillo in platillos" :value="platillo.id">
+              {{ platillo.nombre }}
+            </option>
+          </select>
+          <label for="cliente">Nombre del Platillo</label>
         </div>
 
         <div class="form-floating">
@@ -115,11 +162,23 @@ onMounted(() => {
             type="number"
             class="form-control"
             v-model="cantidad"
-            placeholder="Cantidad"
+            placeholder="cantidad"
             required
           />
           <label for="cantidad">Cantidad</label>
         </div>
+
+        <div class="form-floating">
+          <input
+            type="number"
+            class="form-control"
+            v-model="total"
+            placeholder="total"
+            required
+          />
+          <label for="total">Total</label>
+        </div>
+
         <div class="form-floating mb-3">
           <input
             type="date"
@@ -131,15 +190,6 @@ onMounted(() => {
           <label for="fechaPedido">fecha del Pedido</label>
         </div>
 
-        <div class="form-floating mb-3">
-          <select v-model="idRepartidor" class="form-select">
-            <option v-for="repartidor in repartidores" :value="repartidor.id">
-              {{ repartidor.nombreR }}
-            </option>
-          </select>
-          <label for="repartidor"> Nombre del Repartidor</label>
-        </div>
-
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
             <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Guardar Pedido
@@ -148,7 +198,7 @@ onMounted(() => {
       </form>
     </div>
     <div class="text-left">
-      <button class="btn btn-link" @click="goBack">Volver</button>
+      <button class="btn btn-success" @click="goBack">Volver</button>
     </div>
   </div>
 </template>

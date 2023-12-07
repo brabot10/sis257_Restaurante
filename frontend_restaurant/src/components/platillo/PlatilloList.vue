@@ -64,7 +64,7 @@ onMounted(() => {
     <div class="container">
     <div class="table-responsive">
       <!--tablas propias de bottstrap-->
-      <table class="table table-dark table-striped">
+      <table class="table table-bordered" >
         <thead>
           <tr style="background-color: black">
             <th scope="col" style="color: #e49e48">N°</th>
@@ -113,7 +113,7 @@ onMounted(() => {
       <div class="row">
         <div class="col-md-12">
           <div class="section-heading">
-            <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">VISTA DE PLATILLOS</h2>
+            <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">VISTA DE LOS PLATILLOS DISPONIBLES</h2>
           </div>
         </div>
       </div>
@@ -126,7 +126,7 @@ onMounted(() => {
         <div class="product-item">
           <a href="#">
             <img :src="p.urlPlatillo" alt="Platillo"
-              style="width: 232px; height: 232px; border: 1px solid #808080; border-radius: 10px;">
+              style="width: 232px; height: 232px; border: 1px solid black; border-radius: 10px;">
           </a>
           <div v-if="p.disponibilidad >= 1" >
             <div class="down-content">
