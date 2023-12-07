@@ -4,5 +4,6 @@ export interface Detalle {
   puntuacion: string
   credibilidad: string
   amabilidad: string
+  idCliente: number
   idPedido: number
 }

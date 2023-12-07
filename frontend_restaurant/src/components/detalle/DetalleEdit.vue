@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
 import type { Pedido } from '@/models/pedido'
+import type { Cliente } from '@/models/cliente'
 
 var pedido = ref<Pedido[]>([])
 async function getPedidos() {
@@ -12,6 +13,16 @@ async function getPedidos() {
 onMounted(() => {
   getPedidos()
 })
+
+var cliente = ref<Cliente[]>([])
+async function getCliente() {
+  cliente.value = await http.get('clientes').then((response) => response.data)
+}
+
+onMounted(() => {
+  getCliente()
+})
+
 const props = defineProps<{
   ENDPOINT_API: string
 }>()
@@ -21,6 +32,7 @@ const direccionEstado = ref('')
 const puntuacion = ref('')
 const credibilidad = ref('')
 const amabilidad = ref('')
+const idCliente = ref('')
 const idPedido = ref('')
 const id = router.currentRoute.value.params['id']
 
@@ -31,6 +43,7 @@ async function editarDetalle() {
       puntuacion: puntuacion.value,
       credibilidad: credibilidad.value,
       amabilidad: amabilidad.value,
+      idCliente: idCliente.value,
       idPedido: idPedido.value
     })
     .then(() => router.push('/detalles'))
@@ -42,6 +55,7 @@ async function getDetalle() {
       (puntuacion.value = response.data.puntuacion),
       (credibilidad.value = response.data.credibilidad),
       (amabilidad.value = response.data.amabilidad),
+      (idCliente.value = response.data.idCliente),
       (idPedido.value = response.data.idPedido)
   })
 }
@@ -119,12 +133,21 @@ onMounted(() => {
         </div>
 
         <div class="form-floating mb-3">
-          <select v-model="idPedido" class="form-select">
-            <option v-for="pedidos in pedido" :value="pedidos.id">
-              {{ pedidos.nombreC }}
+          <select v-model="idCliente" class="form-select">
+            <option v-for="clientes in cliente" :value="clientes.id">
+              {{ clientes.nombreCliente }}
             </option>
           </select>
-          <label for="pedidos">Nombre del Cliente</label>
+          <label for="clientes">Nombre del Cliente</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <select v-model="idPedido" class="form-select">
+            <option v-for="pedidos in pedido" :value="pedidos.id">
+              {{ pedidos.fechaPedido }}
+            </option>
+          </select>
+          <label for="pedidos">Fecha del Pedido</label>
         </div>
 
         <div class="text-center mt-3">

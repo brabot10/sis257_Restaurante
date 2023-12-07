@@ -9,7 +9,7 @@ import type { Platillo } from '@/models/platillo'
 
 var direcciones = ref<Direccion[]>([])
 async function getDireccion() {
-  direcciones.value = await http.get('direccion').then((response) => response.data)
+  direcciones.value = await http.get('direcciones').then((response) => response.data)
 }
 
 onMounted(() => {
@@ -19,7 +19,7 @@ onMounted(() => {
 
 var platillos = ref<Platillo[]>([])
 async function getPlatillo() {
-  platillos.value = await http.get('platillo').then((response) => response.data)
+  platillos.value = await http.get('platillos').then((response) => response.data)
 }
 
 onMounted(() => {
@@ -28,7 +28,7 @@ onMounted(() => {
 
 var clientes = ref<Cliente[]>([])
 async function getCliente() {
-  clientes.value = await http.get('cliente').then((response) => response.data)
+  clientes.value = await http.get('clientes').then((response) => response.data)
 }
 
 onMounted(() => {

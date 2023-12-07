@@ -65,6 +65,7 @@ onMounted(() => {
             <th scope="col" style="color: #e49e48">N°</th>
             <th scope="col" style="color: #E49E48;">Detalles en Orden</th>
             <th scope="col" style="color: #e49e48">Nombre del Cliente</th>
+            <th scope="col" style="color: #e49e48">Fecha del Pedido</th>
             <th scope="col" style="color: #e49e48">Estado de la Dirección</th>
             <th scope="col" style="color: #e49e48">Puntuación</th>
             <th scope="col" style="color: #e49e48">Credibilidad</th>
@@ -82,7 +83,8 @@ onMounted(() => {
             <th scope="row" style="color: #f8cb2e">{{ index + 1 }}</th>
             <!--cuando el intex comienza en 0 le damos mas 1-->
             <td align="center" style="color: #F8CB2E;">{{ detalle.id }}</td>
-            <td style="color: #f8cb2e">{{ detalle.pedidos.nombreC }}</td>
+            <td style="color: #f8cb2e">{{ detalle.clientes.nombreCliente }}</td>
+            <td style="color: #f8cb2e">{{ detalle.pedidos.fechaPedido }}</td>
             <td style="color: #f8cb2e">{{ detalle.direccionEstado }}</td>
             <td style="color: #f8cb2e">{{ detalle.puntuacion }}</td>
             <td style="color: #f8cb2e">{{ detalle.credibilidad }}</td>
