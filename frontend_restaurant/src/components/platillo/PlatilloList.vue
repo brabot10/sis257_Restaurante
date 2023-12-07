@@ -3,9 +3,10 @@ import type { Platillo } from '@/models/platillo'
 import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
+import { useAuthStore } from "@/stores/index";
+const authStore = useAuthStore();
 
-const props = defineProps<{
-  //esto se copia 7-11
+const props = defineProps<{//esto se copia 7-11
   ENDPOINT_API: string //variable que vien del view/platillo
 }>()
 
@@ -33,42 +34,46 @@ onMounted(() => {
 </script>
 
 <template>
-  <br /><br /><br />
-  <div class="container">
-    <!--div general con bootstrap con diseño-->
-    <nav aria-label="breadcrumb">
-      <!--//clase propias de botstrap-->
-      <ol class="breadcrumb">
-        <!--//clase propias de botstrap-->
-        <li class="breadcrumb-item">
-          <RouterLink to="/">Inicio</RouterLink>
-        </li>
-        <!--//clase propias de botstrap-->
-        <li class="breadcrumb-item active" aria-current="page" style="color: black">Platillo</li>
-        <!--//clase propias de botstrap-->
-      </ol>
-    </nav>
-
-    <div class="row">
-      <h2>Lista de Platillos</h2>
-      <div class="col-12">
-        <RouterLink to="/platillos/crear"
-          ><!--Enlace deswwgaer para crear-->
-          <font-awesome-icon icon="fa-solid fa-plus" />Crear Nuevo Platillo<!--implmetacion del icono-->
-        </RouterLink>
+    <br /><br /><br />
+  <div v-if="authStore.token">
+    <div class="find-us">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <RouterLink to="/">Inicio</RouterLink>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Platillos</li>
+                </ol>
+              </nav>
+              <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Lista de Platillos
+              </h2>
+              <div class="col-12">
+              </div>
+            </div>
+            <RouterLink  to="/platillos/crear">Crear Nuevo Platilo
+            </RouterLink>
+          </div>
+        </div>
       </div>
     </div>
-
+    <br>
+    <div class="container">
     <div class="table-responsive">
       <!--tablas propias de bottstrap-->
-      <table class="table table-bordered">
+      <table class="table table-dark table-striped">
         <thead>
           <tr style="background-color: black">
             <th scope="col" style="color: #e49e48">N°</th>
             <th scope="col" style="color: #e49e48">Orden de Creacion</th>
-            <th scope="col" style="color: #e49e48">Nombre del Cliente</th>
             <th scope="col" style="color: #e49e48">Nombre del Platillo</th>
+            <th scope="col" style="color: #e49e48">url del Platillo</th>
             <th scope="col" style="color: #e49e48">Precio</th>
+            <th scope="col" style="color: #e49e48">Tiempo de Prepración</th>
+            <th scope="col" style="color: #e49e48">Disponibilidad</th>
             <th scope="col" style="color: #E49E48;">Editar/Eliminar</th>
           </tr>
         </thead>
@@ -82,9 +87,11 @@ onMounted(() => {
             <th scope="row" style="color: #f8cb2e">{{ index + 1 }}</th>
             <!--cuando el intex comienza en 0 le damos mas 1-->
             <td align="center" style="color: #F8CB2E;">{{ platillo.id }}</td>
-            <td style="color: #f8cb2e">{{ platillo.pedidos.nombreC }}</td>
             <td style="color: #f8cb2e">{{ platillo.nombre }}</td>
+            <td style="color: #f8cb2e">{{ platillo.urlPlatillo }}</td>
             <td style="color: #f8cb2e">{{ platillo.precio }}</td>
+            <td style="color: #f8cb2e">{{ platillo.tiempoPraparacion }}</td>
+            <td style="color: #f8cb2e">{{ platillo.disponibilidad }}</td>
             <td>
               <button class="btn text-success" @click="toEdit(platillo.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" />
@@ -93,9 +100,58 @@ onMounted(() => {
                 <font-awesome-icon icon="fa-solid fa-trash" />
               </button>
             </td>
-          </tr>
-        </tbody>
-      </table>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="find-us">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">VISTA DE PLATILLOS</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div v-for="p in platillos" class="col-md-4">
+        <div class="product-item">
+          <a href="#">
+            <img :src="p.urlPlatillo" alt="Platillo"
+              style="width: 232px; height: 232px; border: 1px solid #808080; border-radius: 10px;">
+          </a>
+          <div v-if="p.disponibilidad >= 1" >
+            <div class="down-content">
+              <a href="/platillos/crear">
+                <h4>{{ p.nombre }}</h4>
+              </a>
+              <h6>Bs{{ p.precio }}</h6>
+              <h7>DISPONIBLE</h7>
+              <br><br><br>
+            </div>
+          </div>
+
+          <div v-else>
+            <div class="down-content">
+              <a href="/platillos/crear">
+                <h4 ><del> {{ p.nombre }}</del></h4>
+              </a>
+              <h6>Bs{{ p.precio }}</h6>
+              <p></p>
+              <h4>PLATILLO</h4>
+              <h4>NO DISPONIBLE</h4>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

@@ -1,6 +1,8 @@
 export interface Platillo {
   id: number
   nombre: string
+  urlPlatillo: string
   precio: number
-  idPedido: number
+  tiempoPraparacion: number
+  disponibilidad: number
 }

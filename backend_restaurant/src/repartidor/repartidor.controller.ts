@@ -14,7 +14,7 @@ import { UpdateRepartidorDto } from './dto/update-repartidor.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
-@ApiTags('Repartidor')
+@ApiTags('Repartidores')
 @Controller('repartidor')
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)

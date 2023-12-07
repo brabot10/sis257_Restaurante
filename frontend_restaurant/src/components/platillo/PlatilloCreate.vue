@@ -1,32 +1,37 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+// import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
-import type { Pedido } from '@/models/pedido'
+// import type { Pedido } from '@/models/pedido'
 
-var pedido = ref<Pedido[]>([])
-async function getPedidos() {
-  pedido.value = await http.get('pedido').then((response) => response.data) // del  view
-}
+// var pedido = ref<Pedido[]>([])
+// async function getPedidos() {
+//   pedido.value = await http.get('pedido').then((response) => response.data) // del  view
+// }
 
-onMounted(() => {
-  getPedidos()
-})
+// onMounted(() => {
+//   getPedidos()
+// })
 const props = defineProps<{
   ENDPOINT_API: string
 }>()
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
 const nombre = ref('')
+const urlPlatillo = ref('')
 const precio = ref('')
-const idPedido = ref('')
+const tiempoPraparacion = ref('')
+const disponibilidad = ref('')
 
 async function crearPlatillo() {
   await http
     .post(ENDPOINT, {
       nombre: nombre.value,
+      urlPlatillo: urlPlatillo.value,
       precio: precio.value,
-      idPedido: idPedido.value
+      tiempoPraparacion: tiempoPraparacion.value,
+      disponibilidad: disponibilidad.value
     })
     .then(() => router.push('/platillos'))
 }
@@ -37,20 +42,27 @@ function goBack() {
 </script>
 
 <template>
-  <br /><br /><br />
   <div class="container">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
-        <li class="breadcrumb-item">
-          <RouterLink to="/platillos">Platillos</RouterLink>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page" style="color: black">Crear Platillo</li>
-      </ol>
-    </nav>
-
-    <div class="row">
-      <h2>Crear Nuevo Platillo</h2>
+    <div class="find-us">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <RouterLink to="/">Inicio</RouterLink>
+                </li>
+                <li class="breadcrumb-item">
+                  <RouterLink to="/productos">Productos</RouterLink>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Crear</li>
+              </ol>
+            </nav>
+            <h2>INSERTAR DATOS DEL PRODUCTO</h2>
+            <button class="btn btn-success" @click="goBack">Volver</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="row">
@@ -59,6 +71,10 @@ function goBack() {
         <div class="form-floating mb-3">
           <input type="text" class="form-control" v-model="nombre" placeholder="Nombre" required />
           <label for="nombre">Nombre</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" v-model="urlPlatillo" placeholder="urlPlatillo" required />
+          <label for="urlPlatillo">Url Platillo</label>
         </div>
         <div class="form-floating mb-3">
           <input
@@ -71,12 +87,24 @@ function goBack() {
           <label for="precio">Precio</label>
         </div>
         <div class="form-floating mb-3">
-          <select v-model="idPedido" class="form-select">
-            <option v-for="pedidos in pedido" :value="pedidos.id">
-              {{ pedidos.nombreC }}
-            </option>
-          </select>
-          <label for="pedidos">Nombre del Cliente</label>
+          <input
+            type="number"
+            class="form-control"
+            v-model="tiempoPraparacion"
+            placeholder="tiempoPraparacion"
+            required
+          />
+          <label for="tiempoPraparacion">Tiempo de Preparación</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="number"
+            class="form-control"
+            v-model="disponibilidad"
+            placeholder="disponibilidad"
+            required
+          />
+          <label for="disponibilidad">Disponibilidad</label>
         </div>
 
         <div class="text-center mt-3">
