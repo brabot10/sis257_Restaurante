@@ -18,17 +18,23 @@ const props = defineProps<{
 }>()
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
-const mes = ref('')
-const tiempoExtra = ref('')
+const sueldo = ref('')
+const dia = ref('')
+const diaExtra = ref('')
+const descuento = ref('')
 const total = ref('')
+const fechaCancelado = ref('')
 const idRepartidor = ref('')
 
 async function crearPago() {
   await http
     .post(ENDPOINT, {
-      mes: mes.value,
-      tiempoExtra: tiempoExtra.value,
+      sueldo: sueldo.value,
+      dia: dia.value,
+      diaExtra: diaExtra.value,
+      descuento: descuento.value,
       total: total.value,
+      fechaCancelado: fechaCancelado.value,
       idRepartidor: idRepartidor.value
     })
     .then(() => router.push('/pago'))
@@ -62,30 +68,38 @@ function goBack() {
       <form @submit.prevent="crearPago">
         <!--cuando yo aprete guardar me llma al metodo crearPago-->
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" v-model="mes" placeholder="Mes" required />
-          <label for="mes">Mes</label>
+          <input type="number" class="form-control" v-model="dia" placeholder="dia" required />
+          <label for="dia">Total dia</label>
         </div>
         <div class="form-floating mb-3">
-          <input
-            type="text"
-            class="form-control"
-            v-model="tiempoExtra"
-            placeholder="TiempoExtra"
-            required
-          />
-          <label for="tiempoExtra">Tiempo Extra</label>
+          <input type="number" class="form-control" v-model="diaExtra" placeholder="diaExtra" required />
+          <label for="diaExtra">Total dia Extra</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" v-model="descuento" placeholder="descuento" required />
+          <label for="descuento">Total descuento</label>
         </div>
         <div class="form-floating mb-3">
           <input type="number" class="form-control" v-model="total" placeholder="Total" required />
           <label for="total">Total</label>
         </div>
         <div class="form-floating mb-3">
+          <input
+            type="Date"
+            class="form-control"
+            v-model="fechaCancelado"
+            placeholder="fechaCancelado"
+            required
+          />
+          <label for="fechaCancelado">fecha Cancelado</label>
+        </div>
+        <div class="form-floating mb-3">
           <select v-model="idRepartidor" class="form-select">
             <option v-for="repartidor in repartidores" :value="repartidor.id">
-              {{ repartidor.nombreR }}
+              {{ repartidor.nombreRepartidor }}
             </option>
           </select>
-          <label for="repartidor">Nombre del Repartidor</label>
+          <label for="repartidor"> Nombre del Repartidor</label>
         </div>
 
         <div class="text-center mt-3">

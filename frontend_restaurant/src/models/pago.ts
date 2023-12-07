@@ -1,7 +1,9 @@
 export interface Pago {
     id: number
-    mes: string
-    tiempoExtra:string
+    dia:number
+    diaExtra:number
+    descuento:number
     total:number
+    fechaCancelado:string
     idRepartidor: number
   }
