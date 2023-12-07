@@ -1,39 +1,40 @@
 <script setup lang="ts">
-// import { onMounted, ref } from 'vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
-// import type { Pedido } from '@/models/pedido'
+import type { Cliente } from '@/models/cliente'
 
-// var pedido = ref<Pedido[]>([])
-// async function getPedidos() {
-//   pedido.value = await http.get('pedido').then((response) => response.data) // del  view
-// }
+var clientes = ref<Cliente[]>([])
+async function getClientes() {
+  clientes.value = await http.get('clientes').then((response) => response.data)
+}
 
-// onMounted(() => {
-//   getPedidos()
-// })
+onMounted(() => {
+  getClientes()
+})
+
+
 const props = defineProps<{
   ENDPOINT_API: string
 }>()
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
-const nombre = ref('')
-const urlPlatillo = ref('')
-const precio = ref('')
-const tiempoPraparacion = ref('')
-const disponibilidad = ref('')
+const direccion = ref('')
+const piso = ref('')
+const indicaciones = ref('')
+const estado = ref('')
+const idCliente = ref('')
 
-async function crearPlatillo() {
+async function crearValoracion() {
   await http
     .post(ENDPOINT, {
-      nombre: nombre.value,
-      urlPlatillo: urlPlatillo.value,
-      precio: precio.value,
-      tiempoPraparacion: tiempoPraparacion.value,
-      disponibilidad: disponibilidad.value
+      direccion: direccion.value,
+      piso: piso.value,
+      indicaciones: indicaciones.value,
+      estado: estado.value,
+      idCliente: idCliente.value
     })
-    .then(() => router.push('/platillos'))
+    .then(() => router.push('/direcciones'))
 }
 
 function goBack() {
@@ -54,68 +55,73 @@ function goBack() {
                   <RouterLink to="/">Inicio</RouterLink>
                 </li>
                 <li class="breadcrumb-item">
-                  <RouterLink to="/platillos">Platillos</RouterLink>
+                  <RouterLink to="/direcciones">Direcciones</RouterLink>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Crear</li>
               </ol>
             </nav>
-            <h2>INSERTAR DATOS DEL PLATILLO</h2>
+            <h2>INSERTAR DATOS DE LA DIRECCIÓN</h2>
           </div>
         </div>
       </div>
     </div>
 
     <div class="row">
-      <form @submit.prevent="crearPlatillo">
-        <!--cuando yo aprete guardar me llma al metodo crearPlatillo-->
+      <form @submit.prevent="crearValoracion">
+        <!--cuando yo aprete guardar me llma al metodo crearValoracion-->
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" v-model="nombre" placeholder="Nombre" required />
-          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            v-model="direccion"
+            placeholder="direccion"
+            required
+          />
+          <label for="direccion">Dirección</label>
         </div>
         <div class="form-floating mb-3">
           <input
             type="text"
             class="form-control"
-            v-model="urlPlatillo"
-            placeholder="urlPlatillo"
+            v-model="piso"
+            placeholder="piso"
             required
           />
-          <label for="urlPlatillo">Url Platillo</label>
+          <label for="piso">Piso</label>
         </div>
         <div class="form-floating mb-3">
           <input
-            type="number"
+            type="text"
             class="form-control"
-            v-model="precio"
-            placeholder="Precio"
+            v-model="indicaciones"
+            placeholder="indicaciones"
             required
           />
-          <label for="precio">Precio</label>
+          <label for="indicaciones">Indicaciones</label>
         </div>
         <div class="form-floating mb-3">
           <input
-            type="number"
+            type="text"
             class="form-control"
-            v-model="tiempoPraparacion"
-            placeholder="tiempoPraparacion"
+            v-model="estado"
+            placeholder="estado"
             required
           />
-          <label for="tiempoPraparacion">Tiempo de Preparación</label>
+          <label for="estado">Estado</label>
         </div>
+        
         <div class="form-floating mb-3">
-          <input
-            type="number"
-            class="form-control"
-            v-model="disponibilidad"
-            placeholder="disponibilidad"
-            required
-          />
-          <label for="disponibilidad">Disponibilidad</label>
+          <select v-model="idCliente" class="form-select">
+            <option v-for="cliente in clientes" :value="cliente.id">
+              {{ cliente.nombreCliente }}
+            </option>
+          </select>
+          <label for="cliente">Nombre del Cliente</label>
         </div>
 
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
-            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Crear Platillo
+            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Crear Valoración
           </button>
         </div>
       </form>

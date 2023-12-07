@@ -50,10 +50,10 @@ const authStore = useAuthStore()
           </li>
           <slot v-if="authStore.token">
             <li class="nav-item">
-              <RouterLink to="/about" class="nav-link click-scroll">Clientes</RouterLink>
+              <RouterLink to="/clientes" class="nav-link click-scroll">Clientes</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/about" class="nav-link click-scroll">Direcciones</RouterLink>
+              <RouterLink to="/direcciones" class="nav-link click-scroll">Direcciones</RouterLink>
             </li>
             <li class="nav-item">
               <RouterLink to="/platillos" class="nav-link click-scroll">Platillos</RouterLink>

@@ -9,7 +9,7 @@ import type { Direccion } from '@/models/direccion'
 
 var direcciones = ref<Direccion[]>([])
 async function getDireccion() {
-  direcciones.value = await http.get('direccion').then((response) => response.data)
+  direcciones.value = await http.get('direcciones').then((response) => response.data)
 }
 
 onMounted(() => {
@@ -19,7 +19,7 @@ onMounted(() => {
 
 var platillos = ref<Platillo[]>([])
 async function getPlatillo() {
-  platillos.value = await http.get('platillo').then((response) => response.data)
+  platillos.value = await http.get('platillos').then((response) => response.data)
 }
 
 onMounted(() => {
@@ -28,7 +28,7 @@ onMounted(() => {
 
 var clientes = ref<Cliente[]>([])
 async function getCliente() {
-  clientes.value = await http.get('cliente').then((response) => response.data)
+  clientes.value = await http.get('clientes').then((response) => response.data)
 }
 
 onMounted(() => {
@@ -99,7 +99,6 @@ function goBack() {
         </div>
       </div>
     </div>
-
     <div class="row">
       <form @submit.prevent="crearPedido">
         <div class="form-floating mb-3">
@@ -183,7 +182,7 @@ function goBack() {
       </form>
     </div>
     <div class="text-left">
-      <button class="btn btn-link" @click="goBack">Volver</button>
+      <button class="btn btn-success" @click="goBack">Volver</button>
     </div>
   </div>
 </template>

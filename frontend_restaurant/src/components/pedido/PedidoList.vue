@@ -54,7 +54,7 @@ onMounted(() => {
               </h2>
               <div class="col-12"></div>
             </div>
-            <RouterLink to="/platillos/crear">Crear Nuevo Pedido </RouterLink>
+            <RouterLink to="/pedido/crear">Crear Nuevo Pedido </RouterLink>
           </div>
         </div>
       </div>
@@ -70,10 +70,10 @@ onMounted(() => {
               <th scope="col" style="color: #e49e48">Nombre del Repartidor</th>
               <th scope="col" style="color: #e49e48">Nombre Cliente</th>
               <th scope="col" style="color: #e49e48">Nombre de la Dirección</th>
-              <th scope="col" style="color: #e49e48">Platillo</th>
+              <th scope="col" style="color: #e49e48">Nombre del Platillo</th>
               <th scope="col" style="color: #e49e48">Cantidad</th>
               <th scope="col" style="color: #e49e48">Total</th>
-              <th scope="col" style="color: #e49e48">Fecha del Pedido</th>
+              <th scope="col" style="color: #e49e48">Fecha y Hora del Pedido</th>
               <th scope="col" style="color: #e49e48">Editar/Eliminar</th>
             </tr>
           </thead>
@@ -87,7 +87,7 @@ onMounted(() => {
               <td style="color: #f8cb2e">{{ pedido.platillo.nombre }}</td>
               <td style="color: #f8cb2e">{{ pedido.cantidad }}</td>
               <td style="color: #f8cb2e">{{ pedido.total }}</td>
-              <td style="color: #f8cb2e">{{ dayjs(pedido.fechaPedido).format('DD/MM/YYYY') }}</td>
+              <td style="color: #f8cb2e">{{ pedido.fechaPedido}}</td>
 
               <td>
                 <button class="btn text-success" @click="toEdit(pedido.id)">

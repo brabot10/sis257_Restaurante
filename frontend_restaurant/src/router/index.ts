@@ -79,15 +79,28 @@ const router = createRouter({
       ]
     },
     {
-      path: '/valoraciones', //direccion del swagger
-      name: 'valoraciones',
-      component: () => import('../views/ValoracionView.vue'),
+      path: '/direcciones', //direccion del swagger
+      name: 'direcciones',
+      component: () => import('../views/DireccionView.vue'),
       children: [
-        { path: '', component: () => import('../components/valoracion/ValoracionList.vue') },
-        { path: 'crear', component: () => import('../components/valoracion/ValoracionCreate.vue') },
+        { path: '', component: () => import('../components/direccion/DireccionList.vue') },
+        { path: 'crear', component: () => import('../components/direccion/DireccionCreate.vue') },
         {
           path: 'editar/:id',
-          component: () => import('../components/valoracion/ValoracionEdit.vue')
+          component: () => import('../components/direccion/DireccionEdit.vue')
+        }
+      ]
+    },
+    {
+      path: '/clientes', //direccion del swagger
+      name: 'clientes',
+      component: () => import('../views/ClienteView.vue'),
+      children: [
+        { path: '', component: () => import('../components/cliente/ClienteList.vue') },
+        { path: 'crear', component: () => import('../components/cliente/ClienteCreate.vue') },
+        {
+          path: 'editar/:id',
+          component: () => import('../components/cliente/ClienteEdit.vue')
         }
       ]
     },
