@@ -82,9 +82,9 @@ onMounted(() => {
               <th scope="row" style="color: #f8cb2e">{{ index + 1 }}</th>
               <td align="center" style="color: #f8cb2e">{{ pedido.id }}</td>
               <td style="color: #f8cb2e">{{ pedido.repartidor.nombreRepartidor }}</td>
-              <td style="color: #f8cb2e">{{ pedido.cliente.nombreCliente }}</td>
-              <td style="color: #f8cb2e">{{ pedido.direccion.direccion }}</td>
-              <td style="color: #f8cb2e">{{ pedido.platillo.nombre }}</td>
+              <td style="color: #f8cb2e">{{ pedido.clientes.nombreCliente }}</td>
+              <td style="color: #f8cb2e">{{ pedido.direcciones.direccion }}</td>
+              <td style="color: #f8cb2e">{{ pedido.platillos.nombre }}</td>
               <td style="color: #f8cb2e">{{ pedido.cantidad }}</td>
               <td style="color: #f8cb2e">{{ pedido.total }}</td>
               <td style="color: #f8cb2e">{{ pedido.fechaPedido}}</td>

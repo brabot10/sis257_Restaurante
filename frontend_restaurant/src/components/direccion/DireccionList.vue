@@ -8,14 +8,14 @@ const authStore = useAuthStore();
 
 const props = defineProps<{
   //esto se copia 7-11
-  ENDPOINT_API: string //variable que vien del view/direcciones
+  ENDPOINT_API: string //variable que vien del view/direccion
 }>()
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
-var direcciones = ref<Direccion[]>([]) //creamos la variable plural quie tomara loscalores de models/direcciones
+var direccion = ref<Direccion[]>([]) //creamos la variable plural quie tomara loscalores de models/direccion
 
 async function getDireccion() {
-  direcciones.value = await http.get(ENDPOINT).then((response) => response.data) //para listar hace get del backend
+  direccion.value = await http.get(ENDPOINT).then((response) => response.data) //para listar hace get del backend
 }
 
 function toEdit(id: number) {
@@ -30,7 +30,7 @@ async function toDelete(id: number) {
 }
 
 onMounted(() => {
-  getDireccion() //esto me llama para que cuando yo entre a direcciones me muestre los datos
+  getDireccion() //esto me llama para que cuando yo entre a direccion me muestre los datos
 })
 </script>
 
@@ -79,22 +79,22 @@ onMounted(() => {
             </tr>
         </thead>
         <tbody>
-          <tr v-for="(direccion, index) in direcciones" :key="direccion.id" style="background-color: black">
+          <tr v-for="(direcciones, index) in direccion.values()" :key="direcciones.id" style="background-color: black">
             <!--el singular solo es una variable-->
             <th scope="row" style="color: #f8cb2e">{{ index + 1 }}</th>
             <!--cuando el intex comienza en 0 le damos mas 1-->
-            <td align="center" style="color: #f8cb2e">{{ direccion.id }}</td>
-            <td style="color: #f8cb2e">{{ direccion.cliente.nombreCliente }}</td>
-            <td style="color: #f8cb2e">{{ direccion.direccion }}</td>
-            <td style="color: #f8cb2e">{{ direccion.piso}}</td>
-            <td style="color: #f8cb2e">{{ direccion.indicaciones }}</td>
-            <td style="color: #f8cb2e">{{ direccion.estado }}</td>
+            <td align="center" style="color: #f8cb2e">{{ direcciones.id }}</td>
+            <td style="color: #f8cb2e">{{ direcciones.clientes.nombreCliente }}</td>
+            <td style="color: #f8cb2e">{{ direcciones.direccion }}</td>
+            <td style="color: #f8cb2e">{{ direcciones.piso}}</td>
+            <td style="color: #f8cb2e">{{ direcciones.indicaciones }}</td>
+            <td style="color: #f8cb2e">{{ direcciones.estado }}</td>
 
             <td>
-              <button class="btn text-success" @click="toEdit(direccion.id)">
+              <button class="btn text-success" @click="toEdit(direcciones.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" />
               </button>
-              <button class="btn text-danger" @click="toDelete(direccion.id)">
+              <button class="btn text-danger" @click="toDelete(direcciones.id)">
                 <font-awesome-icon icon="fa-solid fa-trash" />
               </button>
             </td>

@@ -1,18 +1,8 @@
 <script setup lang="ts">
-// import { onMounted, ref } from 'vue'
 import { ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
-// import type { Pedido } from '@/models/pedido'
 
-// var pedido = ref<Pedido[]>([])
-// async function getPedidos() {
-//   pedido.value = await http.get('pedido').then((response) => response.data) // del  view
-// }
-
-// onMounted(() => {
-//   getPedidos()
-// })
 const props = defineProps<{
   ENDPOINT_API: string
 }>()
@@ -20,9 +10,9 @@ const props = defineProps<{
 const ENDPOINT = props.ENDPOINT_API ?? ''
 const nombre = ref('')
 const urlPlatillo = ref('')
-const precio = ref('')
-const tiempoPraparacion = ref('')
-const disponibilidad = ref('')
+const precio = ref(0)
+const tiempoPreparacion = ref(0)
+const disponibilidad = ref(0)
 
 async function crearPlatillo() {
   await http
@@ -30,7 +20,7 @@ async function crearPlatillo() {
       nombre: nombre.value,
       urlPlatillo: urlPlatillo.value,
       precio: precio.value,
-      tiempoPraparacion: tiempoPraparacion.value,
+      tiempoPreparacion: tiempoPreparacion.value,
       disponibilidad: disponibilidad.value
     })
     .then(() => router.push('/platillos'))
@@ -56,7 +46,9 @@ function goBack() {
                 <li class="breadcrumb-item">
                   <RouterLink to="/platillos">Platillos</RouterLink>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Crear</li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Crear
+                </li>
               </ol>
             </nav>
             <h2>INSERTAR DATOS DEL PLATILLO</h2>
@@ -67,10 +59,15 @@ function goBack() {
 
     <div class="row">
       <form @submit.prevent="crearPlatillo">
-        <!--cuando yo aprete guardar me llma al metodo crearPlatillo-->
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" v-model="nombre" placeholder="Nombre" required />
-          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            v-model="nombre"
+            placeholder="nombre"
+            required
+          />
+          <label for="nombre">Nombre Platillo</label>
         </div>
         <div class="form-floating mb-3">
           <input
@@ -96,11 +93,11 @@ function goBack() {
           <input
             type="number"
             class="form-control"
-            v-model="tiempoPraparacion"
-            placeholder="tiempoPraparacion"
+            v-model="tiempoPreparacion"
+            placeholder="tiempoPreparacion"
             required
           />
-          <label for="tiempoPraparacion">Tiempo de Preparación</label>
+          <label for="tiempoPreparacion">Tiempo de Preparación</label>
         </div>
         <div class="form-floating mb-3">
           <input
@@ -119,6 +116,7 @@ function goBack() {
           </button>
         </div>
       </form>
+
     </div>
     <div class="text-left">
       <button class="btn btn-success" @click="goBack">Volver</button>

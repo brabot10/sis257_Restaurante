@@ -83,15 +83,31 @@ onMounted(() => {
     <div class="row">
       <form @submit.prevent="editarPlatillo">
         <div class="form-floating mb-3">
+          <input type="number" class="form-control" v-model="sueldo" placeholder="sueldo" required />
+          <label for="sueldo">Total sueldo</label>
+        </div>
+        <div class="form-floating mb-3">
           <input type="number" class="form-control" v-model="dia" placeholder="dia" required />
           <label for="dia">Total dia</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="number" class="form-control" v-model="diaExtra" placeholder="diaExtra" required />
+          <input
+            type="number"
+            class="form-control"
+            v-model="diaExtra"
+            placeholder="diaExtra"
+            required
+          />
           <label for="diaExtra">Total dia Extra</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="number" class="form-control" v-model="descuento" placeholder="descuento" required />
+          <input
+            type="number"
+            class="form-control"
+            v-model="descuento"
+            placeholder="descuento"
+            required
+          />
           <label for="descuento">Total descuento</label>
         </div>
         <div class="form-floating mb-3">

@@ -16,7 +16,7 @@ const celular = ref('')
 async function crearCliente() {
   await http
     .post(ENDPOINT, {
-        nombreCliente: nombreCliente.value,
+      nombreCliente: nombreCliente.value,
       carnetIdentidad: carnetIdentidad.value,
       fechaEdad: fechaEdad.value,
       celular: celular.value

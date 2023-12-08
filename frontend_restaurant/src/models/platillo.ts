@@ -3,6 +3,6 @@ export interface Platillo {
   nombre: string
   urlPlatillo: string
   precio: number
-  tiempoPraparacion: number
+  tiempoPreparacion: number
   disponibilidad: number
 }

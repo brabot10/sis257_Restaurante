@@ -2,16 +2,6 @@
 import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
-// import type { Pedido } from '@/models/pedido'
-
-// var pedido = ref<Pedido[]>([])
-// async function getPedidos() {
-//   pedido.value = await http.get('pedido').then((response) => response.data)
-// }
-
-// onMounted(() => {
-//   getPedidos()
-// })
 
 const props = defineProps<{
   ENDPOINT_API: string
@@ -20,9 +10,9 @@ const props = defineProps<{
 const ENDPOINT = props.ENDPOINT_API ?? ''
 const nombre = ref('')
 const urlPlatillo = ref('')
-const precio = ref('')
-const tiempoPraparacion = ref('')
-const disponibilidad = ref('')
+const precio = ref(0)
+const tiempoPreparacion = ref(0)
+const disponibilidad = ref(0)
 const id = router.currentRoute.value.params['id']
 
 async function editarPlatillo() {
@@ -31,7 +21,7 @@ async function editarPlatillo() {
       nombre: nombre.value,
       urlPlatillo: urlPlatillo.value,
       precio: precio.value,
-      tiempoPraparacion: tiempoPraparacion.value,
+      tiempoPreparacion: tiempoPreparacion.value,
       disponibilidad: disponibilidad.value
     })
     .then(() => router.push('/platillos'))
@@ -42,7 +32,7 @@ async function getPlatillo() {
     ;(nombre.value = response.data.nombre),
       (urlPlatillo.value = response.data.urlPlatillo),
       (precio.value = response.data.precio),
-      (tiempoPraparacion.value = response.data.tiempoPraparacion),
+      (tiempoPreparacion.value = response.data.tiempoPreparacion),
       (disponibilidad.value = response.data.disponibilidad)
   })
 }
@@ -106,11 +96,11 @@ onMounted(() => {
           <input
             type="number"
             class="form-control"
-            v-model="tiempoPraparacion"
-            placeholder="tiempoPraparacion"
+            v-model="tiempoPreparacion"
+            placeholder="tiempoPreparacion"
             required
           />
-          <label for="tiempoPraparacion">Tiempo de Preparación</label>
+          <label for="tiempoPreparacion">tiempo de Preparacion</label>
         </div>
         <div class="form-floating mb-3">
           <input

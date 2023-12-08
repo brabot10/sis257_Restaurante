@@ -63,7 +63,6 @@ onMounted(() => {
     <br>
     <div class="container">
     <div class="table-responsive">
-      <!--tablas propias de bottstrap-->
       <table class="table table-bordered" >
         <thead>
           <tr style="background-color: black">
@@ -72,14 +71,14 @@ onMounted(() => {
             <th scope="col" style="color: #e49e48">Nombre del Platillo</th>
             <th scope="col" style="color: #e49e48">url del Platillo</th>
             <th scope="col" style="color: #e49e48">Precio</th>
-            <th scope="col" style="color: #e49e48">Tiempo de Prepración</th>
+            <th scope="col" style="color: #e49e48">Tiempo de Preparación</th>
             <th scope="col" style="color: #e49e48">Disponibilidad</th>
             <th scope="col" style="color: #E49E48;">Editar/Eliminar</th>
           </tr>
         </thead>
         <tbody>
           <tr
-            v-for="(platillo, index) in platillos"
+            v-for="(platillo, index) in platillos.values()"
             :key="platillo.id"
             style="background-color: black"
           >
@@ -90,7 +89,7 @@ onMounted(() => {
             <td style="color: #f8cb2e">{{ platillo.nombre }}</td>
             <td style="color: #f8cb2e">{{ platillo.urlPlatillo }}</td>
             <td style="color: #f8cb2e">{{ platillo.precio }}</td>
-            <td style="color: #f8cb2e">{{ platillo.tiempoPraparacion }}</td>
+            <td style="color: #f8cb2e">{{ platillo.tiempoPreparacion }}</td>
             <td style="color: #f8cb2e">{{ platillo.disponibilidad }}</td>
             <td>
               <button class="btn text-success" @click="toEdit(platillo.id)">
@@ -113,7 +112,9 @@ onMounted(() => {
       <div class="row">
         <div class="col-md-12">
           <div class="section-heading">
-            <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">VISTA DE LOS PLATILLOS DISPONIBLES</h2>
+            <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+              VISTA DE LOS PLATILLOS DISPONIBLES
+            </h2>
           </div>
         </div>
       </div>
@@ -134,7 +135,8 @@ onMounted(() => {
                 <h4>{{ p.nombre }}</h4>
               </a>
               <h6>Bs{{ p.precio }}</h6>
-              <h7>DISPONIBLE</h7>
+              <h7>DISPONIBLE en </h7>
+              <h8>{{ p.tiempoPreparacion }} min</h8>
               <br><br><br>
             </div>
           </div>
